@@ -1,7 +1,7 @@
 import React from "react";
 // import { useForm } from "react-hook-form"
-import { useDispatch} from "react-redux"
-import {useParams} from 'react-router-dom'
+// import { useDispatch} from "react-redux"
+// import {useParams} from 'react-router-dom'
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -11,7 +11,7 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { FiEdit2 } from "react-icons/fi";
 // import { HiClock } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { MdSystemUpdateAlt } from "react-icons/md";
+// import { MdSystemUpdateAlt } from "react-icons/md";
 
 
 import {
@@ -28,12 +28,30 @@ function AddUserFeeData(props) {
   const [studentFeeData, setStudentFeeData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredStudentFeeData, setFilteredStudentFeeData] = useState([]);
-  const [editedUser, setEditedUser] = useState(null);
 
   const [loading, setLoading] = useState(false);
     useState(null);
   const [showForm, setShowForm] = useState(false);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
+
+const editedUsers={
+  _id:"",
+  student_name:"",
+  student_class:"",
+  student_enrollment_no:"",
+  student_fee_allotted:"",
+  student_1_installment:"",
+  student_2_installment:"",
+  student_3_installment:"",
+  student_4_installment:"",
+}
+const [editedUser, setEditedUser] = useState(editedUsers);
+
+const inputeditChangeHandler = (e) =>{
+  const {name, value} = e.target;
+  setUser({...editedUser, [name]:value});
+  console.log(editedUser);
+}
 
   const Users ={
     student_name:"",
@@ -90,8 +108,6 @@ const handleSubmit = async (e) => {
 
  
 
-
-  
 
   const deleteUser = async(userId) =>{
     await axios.delete(`https://garudclasses-123.onrender.com/api/v1/userdata/delete-user/${userId}`)
@@ -183,7 +199,8 @@ const handleSubmit = async (e) => {
                 className="bg-transparent border-b border-b-brown-25"
                 type="text"
                 name="student_enrollment_no"
-                onChange={inputHandler}
+                value={editedUser.student_enrollment_no}
+                onChange={inputeditChangeHandler}
               />
             </div>
             <div className="flex justify-between">
@@ -192,7 +209,8 @@ const handleSubmit = async (e) => {
                 className="bg-transparent border-b border-b-brown-25"
                 type="text"
                 name="student_name"
-                onChange={inputHandler}
+                value={editedUser.student_name}
+                onChange={inputeditChangeHandler}
                 
               />
             </div>
@@ -202,7 +220,7 @@ const handleSubmit = async (e) => {
                 className="bg-transparent border-b border-b-brown-25"
                 type="text"
                 name="student_class"
-                onChange={inputHandler}
+                onChange={inputeditChangeHandler}
               />
             </div>
             <div className="flex justify-between">
@@ -211,7 +229,7 @@ const handleSubmit = async (e) => {
                 className="bg-transparent border-b border-b-brown-25"
                 type="text"
                 name="student_Mobile_number"
-                onChange={inputHandler}
+                onChange={inputeditChangeHandler}
               />
             </div>
             <div className="flex justify-between">
@@ -220,7 +238,7 @@ const handleSubmit = async (e) => {
                 className="bg-transparent border-b border-b-brown-25"
                 type="text"
                 name="student_fee_allotted"
-                onChange={inputHandler}
+                onChange={inputeditChangeHandler}
               />
             </div>
             <div className="flex justify-between">
@@ -229,7 +247,7 @@ const handleSubmit = async (e) => {
                 className="bg-transparent border-b border-b-brown-25"
                 type="text"
                 name="student_1_installment"
-                onChange={inputHandler}
+                onChange={inputeditChangeHandler}
               />
             </div>
           
@@ -239,7 +257,7 @@ const handleSubmit = async (e) => {
                 className="bg-transparent border-b border-b-brown-25"
                 type="text"
                 name="student_2_installment"
-                onChange={inputHandler}
+                onChange={inputeditChangeHandler}
               />
             </div>
             
@@ -249,7 +267,7 @@ const handleSubmit = async (e) => {
                 className="bg-transparent border-b border-b-brown-25"
                 type="text"
                 name="student_3_installment"
-                onChange={inputHandler}
+                onChange={inputeditChangeHandler}
               />
             </div>
 
@@ -259,7 +277,7 @@ const handleSubmit = async (e) => {
                 className="bg-transparent border-b border-b-brown-25"
                 type="text"
                 name="student_4_installment"
-                onChange={inputHandler}
+                onChange={inputeditChangeHandler}
               />
             </div>
       <div className="flex justify-center items-center gap-3">
@@ -544,7 +562,6 @@ onSubmit={handleSubmit}>
                       <button
                         disabled={loading}
                         onClick={() => handleEditClick(student._id)}
-
                         title="edit"
                         className="p-2 mr-1 transition-all font-extrabold bg-opacity-25 text-white bg-caribbeangreen-50  rounded-full duration-200 hover:scale-110 hover:text-caribbeangreen-50 hover:bg-white"
                       >
@@ -552,7 +569,7 @@ onSubmit={handleSubmit}>
                       </button>
                       <button
                     disabled={loading}
-                    onClick={()=> deleteUser(student._id)}
+                    onClick={()=> deleteUser(student._id,student.student_name,student.student_enrollment_no)}
                     title="delete"
                     className="p-2 h-fit text-white bg-[#ff0000] rounded-full   transition-all duration-200 hover:scale-110 hover:text-[#ff0000] hover:bg-white"
                   >
