@@ -62,7 +62,7 @@ const inputHandler = (e) =>{
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  await axios.post("http://localhost:8000/api/v1/userdata/add-data", user).then((response) => {
+  await axios.post("https://garud-classes-vm5a.vercel.app/api/v1/userdata/add-data", user).then((response) => {
     toast.success(response.data.message, { position: "top-right" });
     setShowForm(false);
 
@@ -94,7 +94,7 @@ const handleSubmit = async (e) => {
   
 
   const deleteUser = async(userId) =>{
-    await axios.delete(`http://localhost:8000/api/v1/userdata/delete-user/${userId}`)
+    await axios.delete(`https://garud-classes-vm5a.vercel.app/api/v1/userdata/delete-user/${userId}`)
     .then((respones)=>{
       setStudentFeeData((prevUser)=> prevUser.filter((student)=> student._id !== userId))
       toast.success(respones.data.message, {position: 'top-right'})
@@ -132,7 +132,7 @@ const handleSubmit = async (e) => {
   const handleEditSubmit = async (e, id) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:8000/api/v1/userdata/update-data/${id}`, editedUser);
+      const response = await axios.put(`https://garud-classes-vm5a.vercel.app/api/v1/userdata/update-data/${id}`, editedUser);
       toast.success(response.data.message, { position: "top-right" });
       setShowForm(false);
       // Refresh studentFeeData after updating
