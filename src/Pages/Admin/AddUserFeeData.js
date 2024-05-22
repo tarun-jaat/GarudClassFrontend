@@ -50,7 +50,7 @@ const [editedUser, setEditedUser] = useState(editedUsers);
 const inputeditChangeHandler = (e) =>{
   const {name, value} = e.target;
   setUser({...editedUser, [name]:value});
-  console.log(editedUser);
+  // console.log(editedUser);
 }
 
   const Users ={
@@ -148,10 +148,11 @@ const handleSubmit = async (e) => {
 
 
 
-  const handleEditSubmit = async (e, _id) => {
+  const handleEditSubmit = async (e) => {
+    const id=editedUser._id;
     e.preventDefault();
     try {
-      const response = await axios.put(`https://garudclasses-123.onrender.com/api/v1/userdata/update-data/${_id}`, editedUser);
+      const response = await axios.put(`https://garudclasses-123.onrender.com/api/v1/userdata/update-data/${id}`, editedUser);
       toast.success(response.data.message, { position: "top-right" });
       setShowForm(false);
       // Refresh studentFeeData after updating
