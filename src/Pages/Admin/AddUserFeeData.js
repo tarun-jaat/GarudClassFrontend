@@ -484,10 +484,10 @@ onSubmit={handleSubmit}>
                   key={student.student_enrollment_no}
                   className="group flex justify-between items-center gap-x-6 border-b border-richblack-800 px-6 py-8"
                 >
-                  <Td className="text-sm  w-[100px]  font-medium text-richblack-100">
+                  <Td className="text-sm   font-medium text-richblack-100">
                     {student.student_enrollment_no}
                   </Td>
-                  <Td className="text-sm w-[100px]  text-star font-medium text-richblack-100">
+                  <Td className="text-sm   text-star font-medium text-richblack-100">
                     {student.student_name}
                   </Td>
                   <Td className="text-sm font-medium text-richblack-100">
