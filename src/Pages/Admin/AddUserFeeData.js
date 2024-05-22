@@ -1,7 +1,7 @@
 import React from "react";
 // import { useForm } from "react-hook-form"
 // import { useDispatch} from "react-redux"
-// import {useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -148,7 +148,8 @@ const handleSubmit = async (e) => {
 
 
 
-  const handleEditSubmit = async (e, id) => {
+  const handleEditSubmit = async (e) => {
+    const id=useParams();
     e.preventDefault();
     try {
       const response = await axios.put(`https://garudclasses-123.onrender.com/api/v1/userdata/update-data/${id}`, editedUser);
@@ -191,7 +192,7 @@ const handleSubmit = async (e) => {
     <form
       id="editForm"
       className="text-white flex flex-1 gap-2 flex-col h-fit m-auto w-2/5 p-8 bg-richblue-700 top-[50%] rounded-2xl"
-      onSubmit={(e) => handleEditSubmit(e, editedUser._id)}
+      onSubmit={(e) => handleEditSubmit(e,_id)}
     >
       <div className="flex justify-between">
               <label>Enrollment No:</label>
