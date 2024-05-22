@@ -148,8 +148,8 @@ const handleSubmit = async (e) => {
 
 
 
-  const handleEditSubmit = async (e) => {
-    const id=editedUser._id;
+  const handleEditSubmit = async (e,student) => {
+    const id=student._id;
     e.preventDefault();
     try {
       const response = await axios.put(`https://garudclasses-123.onrender.com/api/v1/userdata/update-data/${id}`, editedUser);
@@ -192,7 +192,7 @@ const handleSubmit = async (e) => {
     <form
       id="editForm"
       className="text-white flex flex-1 gap-2 flex-col h-fit m-auto w-2/5 p-8 bg-richblue-700 top-[50%] rounded-2xl"
-      onSubmit={(e) => handleEditSubmit(e, editedUser._id)}
+      onSubmit={(e) => handleEditSubmit(e)}
     >
       <div className="flex justify-between">
               <label>Enrollment No:</label>
@@ -562,7 +562,7 @@ onSubmit={handleSubmit}>
                       
                       <button
                         disabled={loading}
-                        onClick={() => handleEditClick(student._id)}
+                        onClick={() => handleEditClick(student)}
                         title="edit"
                         className="p-2 mr-1 transition-all font-extrabold bg-opacity-25 text-white bg-caribbeangreen-50  rounded-full duration-200 hover:scale-110 hover:text-caribbeangreen-50 hover:bg-white"
                       >
@@ -570,7 +570,7 @@ onSubmit={handleSubmit}>
                       </button>
                       <button
                     disabled={loading}
-                    onClick={()=> deleteUser(student._id,student.student_name,student.student_enrollment_no)}
+                    onClick={()=> deleteUser(student._id)}
                     title="delete"
                     className="p-2 h-fit text-white bg-[#ff0000] rounded-full   transition-all duration-200 hover:scale-110 hover:text-[#ff0000] hover:bg-white"
                   >
