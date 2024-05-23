@@ -546,13 +546,13 @@ onSubmit={handleSubmit}>
                     {student.student_fee_allotted -(
                       (isNaN(student.student_1_installment)
                         ? 0
-                        : student.student_1_installment) -
-                      -(isNaN(student.student_2_installment)
+                        : student.student_1_installment) +
+                      (isNaN(student.student_2_installment)
                         ? 0
-                        : student.student_2_installment) -
+                        : student.student_2_installment) +
                       (isNaN(student.student_3_installment)
                         ? 0
-                        : student.student_3_installment) -
+                        : student.student_3_installment) +
                       (isNaN(student.student_4_installment)
                         ? 0
                         : student.student_4_installment))}
