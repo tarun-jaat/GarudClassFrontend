@@ -543,7 +543,7 @@ onSubmit={handleSubmit}>
                   </Td>
                   <Td className="text-sm font-medium text-richblack-100">
                     ₹
-                    {student.student_fee_allotted -
+                    {student.student_fee_allotted -(
                       (isNaN(student.student_1_installment)
                         ? 0
                         : student.student_1_installment) -
@@ -555,7 +555,7 @@ onSubmit={handleSubmit}>
                         : student.student_3_installment) -
                       (isNaN(student.student_4_installment)
                         ? 0
-                        : student.student_4_installment)}
+                        : student.student_4_installment))}
                   </Td>
                   <Td className="text-sm  font-medium text-richblack-100 ">
                   
