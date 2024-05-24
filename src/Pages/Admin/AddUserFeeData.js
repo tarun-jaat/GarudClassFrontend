@@ -277,7 +277,7 @@ const deleteUser = async (userId) => {
     const filteredData = studentFeeData.filter(
       (student) => String(student.student_enrollment_no).toLowerCase().includes(searchTerm)
     );
-    setFilteredStudentFeeData(filteredData);
+    setStudentFeeData(filteredData);
   };
 
   const handleFilterChange = (e) => {
