@@ -27,8 +27,8 @@ export const getAllUserFeeData = async () => {
 
 export const updateStudentFeeData = async (studentId, updatedData) => {
   try {
-    const response = await fetch(`/api/update-student-fee-data/${studentId}`, {
-      method: "PATCH",
+    const response = await fetch(`https://garudclasses-123.onrender.com/api/v1/userdata/update-data/${studentId}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },

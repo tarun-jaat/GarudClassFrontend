@@ -42,3 +42,13 @@ const {
       toast.dismiss(toastId)
     }
   }
+
+  export function logout(navigate) {
+    return (dispatch) => {
+      dispatch(setToken(null))
+      localStorage.removeItem("token")
+      localStorage.removeItem("user")
+      toast.success("Logged Out")
+      navigate("/")
+    }
+  }
