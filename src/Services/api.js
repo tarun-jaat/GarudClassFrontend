@@ -10,3 +10,7 @@ export const studentFeeDataEndpoints={
     UPDATE_STUDENT_FEE_DATA:BASE_URL+ "/userdata/addData/:id",
     ADD_STUDENT_INTO_DATABASE:BASE_URL+ "/userdata/adddata"
 } 
+
+export const contactusEndpoint = {
+    CONTACT_US_API: BASE_URL + "/reach/contact",
+  }

@@ -27,9 +27,12 @@ function Signinform() {
   }
 
   return (
+    <div className='h-screen flex items-center justify-center w-screen m-auto bg-primary '>
+
+
     <form
       onSubmit={handleOnSubmit}
-      className=" flex flex-col items-center max-w-[500px] p-8 w-[100%] bg-blue-500 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border gap-8 border-hite"
+      className=" flex flex-col items-center max-w-[500px]  p-8 w-[100%] bg-blue-500 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border gap-8 border-hite"
       style={{ margin: " auto" }}
 
     >
@@ -83,11 +86,12 @@ function Signinform() {
         </Link></p>
       <button
         type="submit"
-        className="w-full mt-6 rounded-[8px] bg-caribbeangreen-600 py-[8px] px-[12px] font-bold text-white  hover:bg-transparent  border-2 border-caribbeangreen-50 "
+        className="w-full mt-6 rounded-[8px] bg-[#FF9A00] py-[8px] px-[12px] font-bold text-white  hover:bg-transparent  border-2 border-[#FF9A00] hover:text-[#FF9A00] "
       >
         Sign In
       </button>
     </form>
+    </div>
   )
 }
 

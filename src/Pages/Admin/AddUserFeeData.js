@@ -81,7 +81,7 @@ const inputhandler = (e) =>{
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  await axios.post("https://garudclasses-123.onrender.com/api/v1/userdata/add-data", user).then((response) => {
+  await axios.post("http://localhost:8000/api/v1/userdata/add-data", user).then((response) => {
     toast.success(response.data.message, { position: "top-right" });
     setShowForm(false);
  
@@ -156,7 +156,7 @@ fetchData();
 const deleteUser = async (userId) => {
   const confirmDelete = window.confirm("Are you sure you want to delete this student?");
   if (confirmDelete) {
-    await axios.delete(`https://garudclasses-123.onrender.com/api/v1/userdata/delete-user/${userId}`)
+    await axios.delete(`http://localhost:8000/api/v1/userdata/delete-user/${userId}`)
     
      .then((respones) => {
         // Get the updated list of users
@@ -277,7 +277,7 @@ const deleteUser = async (userId) => {
     const filteredData = studentFeeData.filter(
       (student) => String(student.student_enrollment_no).toLowerCase().includes(searchTerm)
     );
-    setStudentFeeData(filteredData);
+    setFilteredStudentFeeData(filteredData);
   };
 
   const handleFilterChange = (e) => {
@@ -455,7 +455,7 @@ onSubmit={handleSubmit}>
             </div>
             <div className="flex justify-between">
               <label>Class:</label>
-              {/* <select
+              <select
                     name="student_class"
       onChange={inputhandler}
   className="bg-transparent border-b border-b-brown-25"
@@ -466,14 +466,14 @@ onSubmit={handleSubmit}>
   <option className="text-black bg-transparent border-b border-richblack-50" value="Other">Other</option>
 </select>
 
-{selectedClass === "Other" && ( */}
+{selectedClass === "Other" && (
     <input
       className="bg-transparent border-b border-b-brown-25"
       type="text"
       name="student_class"
       onChange={inputhandler}
     />
-{/* )} */}
+)}
             </div>
             <div className="flex justify-between">
               <label>Mobile No.:</label>
@@ -554,7 +554,7 @@ onSubmit={handleSubmit}>
         </div>
       )}
   
-    <div className=" m-5 p-6 border z-0 bg-richblue-600 rounded-3xl border-richblack-500 ">
+    <div className=" m-5 p-12 border z-0 bg-richblue-600 rounded-3xl border-richblack-500 ">
       
       <div className=" w-full flex justify-between">
       <input
@@ -579,17 +579,17 @@ onSubmit={handleSubmit}>
 
       
       <div
-  class=" flex flex-col w-full h-full overflow-scroll scroll-smooth text-white bg-richblue-500 shadow-md rounded-xl bg-clip-border">
+  class=" flex flex-col items-center justify-center w-full h-full overflow-scroll scroll-smooth text-black bg-richblue-5 shadow-md rounded-xl bg-clip-border">
   <table class="w-full text-left table-auto min-w-max">
           <thead>
             <tr>
-            <th class="p-4 border-b border-richblack-100 bg-blue-gray-50">
+            <th class="px-6 border-b border-richblack-100 bg-blue-gray-50">
             <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
 
                 S no.
                 </p>
               </th>
-            <th class="p-2 border-b border-richblack-100 bg-blue-gray-50">
+            <th class=" border-b border-richblack-100 bg-blue-gray-50">
             <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
 
                 Enrollment no.
@@ -688,13 +688,13 @@ onSubmit={handleSubmit}>
                 <tr
                   key={index}
                 >
-                  <td class="pl-4 border-b border-blue-gray-50">
+                  <td class="pl-6 border-b border-blue-gray-50">
         <p class="block font-sans  text-sm antialiased font-normal leading-normal text-blue-gray-900">
 
                     {index+1}
                     </p>
                   </td>
-        <td class=" border-b border-blue-gray-50">
+        <td class=" border-b pl-2 border-blue-gray-50">
         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
 
                     {student.student_enrollment_no}
@@ -790,7 +790,7 @@ onSubmit={handleSubmit}>
                         disabled={loading}
                         onClick={() => handleEditClick(student)}
                         title="edit"
-                        className="p-2 mr-1 transition-all font-extrabold bg-opacity-25 text-white bg-caribbeangreen-50  rounded-full duration-200 hover:scale-110 hover:text-caribbeangreen-50 hover:bg-white"
+                        className="p-2 mr-1 transition-all font-extrabold bg-opacity-50 text-white bg-caribbeangreen-100  rounded-full duration-200 hover:scale-110 hover:text-caribbeangreen-50 hover:bg-white"
                       >
                         <FiEdit2 size={20} />
                       </button>
@@ -810,15 +810,7 @@ onSubmit={handleSubmit}>
               ))
             )}
           </tbody>
-          <div className="w-full flex flex-row gap-3 justify-center items-center">
-          <button className="px-3 py-2 bg-richblue-300 rounded-xl border border-richblue-200 " disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>
-        Previous
-      </button>
-      <button className="px-3 py-2 bg-richblue-300 rounded-xl border border-richblue-200 "  disabled={currentPage * 10 >= studentFeeData.length} onClick={() => setCurrentPage(currentPage + 1)}>
-        Next
-      </button>
-
-          </div>
+          
           
         </table>
         {/* <Link
@@ -826,7 +818,17 @@ onSubmit={handleSubmit}>
         >
           logout
         </Link> */}
-        
+        <div className="w-full flex felx-row mt-2 gap-3 text-white justify-center items-center">
+          <button     className={`px-3 py-2 rounded-2xl ${currentPage === 1? 'bg-richblack-300 cursor-not-allowed hidden' : 'bg-richblue-300'}`}
+ disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>
+        Previous
+      </button>
+      <button     className={`px-3 py-2 rounded-2xl ${currentPage * 10 >= studentFeeData.length? 'bg-richblack-300 cursor-not-allowed hidden' : 'bg-richblue-300'}`}
+  disabled={currentPage * 10 >= studentFeeData.length} onClick={() => setCurrentPage(currentPage + 1)}>
+        Next
+      </button>
+
+          </div>
       </div>
     </div>
     </>
