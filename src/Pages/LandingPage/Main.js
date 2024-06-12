@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect,useRef } from "react";
 import Slideshow from "../../Components/Core/LandingPage/SlideShow";
 import OurSelections from "../../Components/Core/LandingPage/OurSelections";
 import Anouncement from "../../Components/Core/LandingPage/Anouncement";
@@ -13,21 +14,37 @@ import WhyUs from "../../Components/Core/LandingPage/WhyUs/WhyUs";
 import Banner from "../../Components/Core/LandingPage/Banner";
 import Footer from "../../Components/Core/LandingPage/Footer";
 /// import ContactUsForm from '../../Components/Common/ContactUsForm'
+import ScrollReveal from 'scrollreveal'
 function Main() {
+
+  const targetRef = useRef(null);
+
+  useEffect(() => {
+    const config = {
+      origin: 'left',
+      duration: 1000,
+      delay: 150,
+      distance: '500px',
+      scale: 1,
+      easing: 'ease',
+    };
+
+    ScrollReveal().reveal(targetRef.current, config);
+  }, []); 
   return (
-    <div className="Landing-page h-screen bg-richblack-5  w-full">
-      <Slideshow />
-      <div className="w-full px-10 flex flex-col md:flex-row justify-center h-[200px] md:h-[400px]  mt-5 gap-4 items-center">
+    <div className="Landing-page h-screen w-full">
+      <Slideshow  />
+      <div ref={targetRef} className="w-full md:px-10 px-2 flex flex-col md:flex-row justify-center h-auto md:h-[400px] mt-0  md:mt-5 gap-4 items-center">
         <OurSelections />
         <Anouncement />
       </div>
       {/* <ContactUsForm/> */}
-      <div className=" text-center font-inter w-full mt-16 flex ">
-        <div className="max-w-full  p-10 flex flex-col justify-center items-center gap-2 ">
-          <p className=" Heading text-2xl text-richblack-700 underline font-extrabold ">
+      <div className=" text-center font-inter w-full mt-8 md:mt-16 flex ">
+        <div className="max-w-full md:p-10 flex flex-col justify-center items-center gap-2 ">
+          <p className=" Heading text-xl md:text-2xl text-richblack-700 underline font-extrabold ">
             Explore Your Carrier Path With Garud Classes
           </p>
-          <p className="mt-4 text-lg text-richblack-600 w-[1000px]">
+          <p className="mt-4 text-sm md:text-lg text-richblack-600 md:w-[1000px]">
             Stay focused on your long-term goals while remaining adaptable to
             change. Remember, your career journey is a marathon, not a sprint –
             enjoy the ride!
@@ -38,18 +55,18 @@ function Main() {
             <Card />
             <Card />
             <Card />
-            <Link className="p-3 flex text-md items-center h-fit border-2 border-blue-200 rounded-xl hover:border-0 hover:text-blue-200  hover:underline underline-offset-4 hover:text-xl">
+            <Link className="md:p-3 p-2 flex text-md items-center h-fit border-2 border-blue-200 rounded-xl hover:border-0 hover:text-blue-200  hover:underline underline-offset-4 hover:text-xl">
               Explore All <IoIosArrowRoundForward fontSize={24} />
             </Link>
           </div>
         </div>
       </div>
-      <div className="relative font-inter w-full mt-8 px-8 ">
+      <div className="relative font-inter w-full mt-8 md:px-8 ">
         <div className="flex items-center justify-between px-4 pb-6">
-          <p className="Heading text-2xl  text-richblack-700 underline font-extrabold ">
+          <p className="Heading  text-xl md:text-2xl  text-richblack-700 underline font-extrabold ">
             Online Courses
           </p>
-          <Link className="p-3 flex text-md items-center h-fit border-2 border-blue-200 rounded-xl hover:border-0 hover:text-blue-200  hover:underline underline-offset-4 hover:text-xl">
+          <Link className="md:p-3 p-1 flex text-md items-center h-fit border-2 border-blue-200 rounded-xl hover:border-0 hover:text-blue-200  hover:underline underline-offset-4 hover:text-xl">
             View All <IoIosArrowRoundForward fontSize={24} />
           </Link>
         </div>
@@ -57,12 +74,12 @@ function Main() {
           <CardSlideShow />
         </div>
       </div>
-      <div className="relative px-8 mt-60">
-        <div className="flex items-center justify-between px-4">
-          <p className="Heading p-4 pb-8 text-2xl px-4  text-richblack-700 underline font-extrabold ">
+      <div className="relative md:px-8 mt-60">
+        <div className="flex items-center justify-between py-8 md:py-0 px-4">
+          <p className="Heading md:p-4 md:pb-8 text-xl md:text-2xl md:px-4  text-richblack-700 underline font-extrabold ">
             Our Batches
           </p>
-          <Link className="p-3 flex text-md items-center h-fit border-2 border-blue-200 rounded-xl hover:border-0 hover:text-blue-200  hover:underline underline-offset-4 hover:text-xl">
+          <Link className="md:p-3 p-1 flex text-md items-center h-fit border-2 border-blue-200 rounded-xl hover:border-0 hover:text-blue-200  hover:underline underline-offset-4 hover:text-xl">
             View All <IoIosArrowRoundForward fontSize={24} />
           </Link>
         </div>
@@ -72,17 +89,18 @@ function Main() {
           <CardBatches />
         </div>
       </div>
-      <div className="explore flex flex-col gap-3 justify-between items-center text-center w-full p-8 mt-8 ">
-        <strong className=" text-4xl   ">
+      <div  className="explore flex flex-col gap-3 justify-between items-center text-center w-full p-4 md:p-8 mt-8 ">
+        <strong className=" text-2xl md:text-4xl   ">
           Why Garud Classes
         </strong>
-        <p className="w-4/5 text-lg text-richblack-600">
+        <p className="md:w-4/5 text-md md:text-lg text-richblack-600">
         We prioritize excellence in education, ensuring every student receives personalized attention and top-notch guidance. Our experienced faculty is committed to nurturing your potential, preparing you for various tests with comprehensive and insightful teaching methods.
         </p>
         <WhyUs/>
       </div>
       <Banner/>
       <Social />
+      
       <Footer/>
     </div>
   );

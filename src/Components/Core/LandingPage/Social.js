@@ -3,9 +3,9 @@ import { FaHandshake } from "react-icons/fa";
 
 const SocialIcons = () => {
   return ( 
-    <div className="card fixed bottom-3 right-3 translate-x-[75%] transition-all ease-in-out rounded-s-3xl duration-100 hover:translate-x-0 py-3 bg-blue-300">
+    <div className="card fixed bottom-3 right-3 md:translate-x-[75%] translate-x-[85%] transition-all ease-in-out rounded-s-3xl duration-100 hover:translate-x-0 md:py-3 py-1 bg-blue-300">
       <span className='text-white '>
-        <FaHandshake fontSize={"42px"}/>
+        <FaHandshake className='md:text-4xl text-2xl'/>
         {/* Get Connect */}
         </span>
       <a className="social-link" href="#">

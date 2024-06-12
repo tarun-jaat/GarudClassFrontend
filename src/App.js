@@ -2,7 +2,7 @@ import React from "react";
 import './App.css'
 import { Routes, Route } from "react-router-dom";
 
-import Login from "./Pages/Auth/Login";
+import Login from "./Components/Core/Auth/Login";
 import OpenRoute from "./Components/Core/Auth/OpenRoute";
 import PrivateRoute from "./Components/Core/Auth/PrivateRoute";
 import AddUserFeeData from "./Pages/Admin/AddUserFeeData";
@@ -14,7 +14,7 @@ function App() {
     <div className="w-full min-h-screen bg-white flex flex-col font-inter">
 <Navbar/>
 <RaiseAnyQuery/>
-<div className="mt-[90px]">
+<div className=" m-0 md:mt-[90px]">
     <Routes >
       <Route
         path="/login"
@@ -32,14 +32,14 @@ function App() {
         </OpenRoute>
       }
       />
-      <Route
+      {/* <Route
         path="/fee-data"
         element={
           <PrivateRoute>
             <AddUserFeeData />
           </PrivateRoute>
         }
-      />
+      /> */}
       {/* <Route
       path="/pepclass"
       element={

@@ -5,7 +5,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Toaster } from "react-hot-toast";
 import {Provider} from "react-redux";
 import rootReducer from "./reducers";
-
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";

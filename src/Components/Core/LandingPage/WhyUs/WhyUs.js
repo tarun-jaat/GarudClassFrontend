@@ -43,15 +43,15 @@ export default function WhyUs() {
             key={index}
             className={`flex items-center justify-between gap-16  mb-4 pb-4  ${
               index % 2 === 0
-                ? "flex-row"
-                : "flex-row-reverse md:flex-row-reverse"
+                ? "md:flex-row flex-col"
+                : "flex-col md:flex-row-reverse"
             }`}
           >
-            <img src={link.Img} height={250} width={250} alt="Why US" />
+            <img src={link.Img} className="md:h-[250px] md:w-[250px] h-[150px] w-[200px]"  alt="Why US" />
             <div className="text-start">
             <p className="text-2xl font-bold text-[#f9Aa00]">{link.title}</p>
 
-            <p className="w-4/5">{link.Description}</p>
+            <p className="md:w-4/5 md:text-lg text-sm text-richblack-700 w-full">{link.Description}</p>
 
 
             </div>

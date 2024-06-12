@@ -27,7 +27,7 @@ const CardSlider = ({ cards }) => {
   }, [cards]);
 
   return (
-    <div className='flex gap-24 w-4/5 mt-10 mb-7'>
+    <div className='flex gap-2 w-4/5 mt-10 mb-7'>
       {cards.map((card, index) => (
         <div
           key={index}
@@ -52,7 +52,7 @@ export default function CardSlideShow() {
     className: "center",
     centerMode: true,
     infinite: true,
-    centerPadding: "60px",
+    centerPadding: "",
     slidesToShow: 3,
     speed: 500
   };

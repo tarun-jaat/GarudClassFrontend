@@ -36,7 +36,7 @@ function Anouncement() {
         content = <div>Unknown tab</div>;
     }
   return (
-    <div className='h-full flex flex-col  items-center w-full md:w-[30%] shadow-xl shadow-richblack-500 rounded-2xl border-2 border-[#727272]'>
+    <div className='md:h-[300px] h-[250px] flex flex-col  items-center w-full md:w-[30%] shadow-xl shadow-richblack-500 rounded-2xl border-2 border-[#727272]'>
         <Tab tabData={tabData} field={accountType} setField={setAccountType} />
         {content}
     </div>

@@ -36,6 +36,12 @@
     height: 50px;
     width: 200px;
   }
+  @media only screen and (max-width: 600px) {
+    .card{
+      height: 40px;
+    }
+    
+  }
   
   .card::before, .card::after {
     position: absolute;
@@ -51,7 +57,7 @@
     content: "";
     left: 0;
     justify-content: flex-end;
-    background-color: #ffb507;
+    background-color: #006097;
   }
   
   .card::after {

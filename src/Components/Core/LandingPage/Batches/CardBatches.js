@@ -32,7 +32,7 @@ const data=[
 
 export default function CardBatches() {
   return (
-    <div className='border relative shadow-lg shadow-richblack-400 hover:bg-richblack-5 p-4 w-[350px] gap-2 flex flex-col rounded-xl'>
+    <div className='border relative shadow-lg shadow-richblack-400 hover:bg-richblack-5 p-4 w-[300px] md:w-[350px] gap-2 flex flex-col rounded-xl'>
         
         <img className=' rounded-lg' src='https://th.bing.com/th/id/OIP.2Ecc2kJaDoiau98cs8wETgHaE8?rs=1&pid=ImgDetMain' alt='batches'/>
         <div className='flex items-center justify-between px-3 gap-4'>
@@ -49,10 +49,10 @@ export default function CardBatches() {
             </p>
         </div>
         </div>
-        <strong className='text-2xl '>Eklavya Neet Batch {"(Offline)"}</strong>
+        <strong className='text-xl md:text-2xl '>Eklavya Neet Batch {"(Offline)"}</strong>
         {data.map((Key,index)=>(
             <div className='flex items-center justify-start gap-4 text-richblack-700 text-md font-bold '>
-                <p className='text-xl text-richblack-500'>
+                <p className='md:text-xl text-md text-richblack-500'>
                     {Key.icon} 
                 </p>
                 <p>
@@ -64,7 +64,7 @@ export default function CardBatches() {
         <BsBookmarkCheckFill fontSize={20}/>
          Enroll Now
         </Link>
-        <div className=' absolute flex items-center justify-center badge h-8 w-32 rotate-45 text-center text-white font-bold right-[-37px] top-2 '>
+        <div className=' absolute flex items-center justify-center badge h-6 w-24 md:h-8 md:w-32 rotate-45 text-center text-white font-bold right-[-37px] top-2 '>
         New
     </div>
     </div>

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import CountryCode from "../../Data/DialCodes.json"
 import { apiConnector } from "../../Services/apiConnecter"
 import { contactusEndpoint } from "../../Services/api"
-
+import { toast } from "react-hot-toast"
 const ContactUsForm = () => {
   const [loading, setLoading] = useState(false)
   const {
@@ -23,8 +23,11 @@ const ContactUsForm = () => {
         contactusEndpoint.CONTACT_US_API,
         data
       )
+      
       // console.log("Email Res - ", res)
+      // toast.loading('Please Wait we are sendind you response')
       setLoading(false)
+      toast.success("Email Sent successfully we will reach you soon")
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
       setLoading(false)
@@ -45,11 +48,11 @@ const ContactUsForm = () => {
 
   return (
     <form
-      className="flex p-3 rounded-md bg-white flex-col gap-7 w-fit border-2 border-richblack-200"
+      className="flex md:p-3  p-2 rounded-xl md:rounded-md bg-white flex-col md:gap-7 w-fit border-2 border-richblack-200"
       onSubmit={handleSubmit(submitContactForm)}
     >
-      <div className="flex flex-col gap-5 lg:flex-row">
-        <div className="flex flex-col gap-2 lg:w-[48%]">
+      <div className="flex flex-col md:gap-5 gap-2 lg:flex-row">
+        <div className="flex flex-col md:gap-2 lg:w-[48%]">
           <label htmlFor="firstname" className="lable-style">
             First Name
           </label>
@@ -67,7 +70,7 @@ const ContactUsForm = () => {
             </span>
           )}
         </div>
-        <div className="flex flex-col gap-2 lg:w-[48%]">
+        <div className="flex flex-col gap-1 md:gap-2 lg:w-[48%]">
           <label htmlFor="lastname" className="lable-style">
             Last Name
           </label>
@@ -82,7 +85,7 @@ const ContactUsForm = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1 md:gap-2">
         <label htmlFor="email" className="lable-style">
           Email Address
         </label>
@@ -101,12 +104,12 @@ const ContactUsForm = () => {
         )}
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1 md:gap-2">
         <label htmlFor="phonenumber" className="lable-style">
           Phone Number
         </label>
 
-        <div className="flex gap-5">
+        <div className="flex gap-1 md:gap-5">
           <div className="flex w-[81px] flex-col gap-2">
             <select
               type="text"
@@ -150,7 +153,7 @@ const ContactUsForm = () => {
         )}
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1 md:gap-2">
         <label htmlFor="message" className="lable-style">
           Message
         </label>
