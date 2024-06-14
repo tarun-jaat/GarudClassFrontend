@@ -46,8 +46,8 @@ function Navbar() {
         </div>
       </div>
       <Link
-        className="md:px-4 hidden md:block  md:py-3 p-2 mr-3 bg-blue-200 text-white md:font-bold font-inter rounded-2xl hover:border-2 hover:border-blue-200 hover:bg-transparent hover:scale-105 hover:text-blue-200"
-        to={"/"}
+        className="md:px-4 hidden md:block  md:py-3 p-2 mr-3 bg-blue-200 text-white md:font-bold font-inter rounded-2xl hover:border-2 hover:border-blue-200 hover:scale-105 hover:text-blue-200"
+        to={"/signup"}
       >
         SignUp
       </Link>

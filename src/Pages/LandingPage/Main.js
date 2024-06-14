@@ -15,6 +15,8 @@ import Banner from "../../Components/Core/LandingPage/Banner";
 import Footer from "../../Components/Core/LandingPage/Footer";
 /// import ContactUsForm from '../../Components/Common/ContactUsForm'
 import ScrollReveal from 'scrollreveal'
+import RaiseAnyQuery from "../../Components/Common/RaiseAnyQuery";
+import Navbar from "../../Components/Common/Navbar";
 function Main() {
 
   const targetRef = useRef(null);
@@ -33,6 +35,8 @@ function Main() {
   }, []); 
   return (
     <div className="Landing-page h-screen w-full">
+      <Navbar/>
+      <RaiseAnyQuery/>
       <Slideshow  />
       <div ref={targetRef} className="w-full md:px-10 px-2 flex flex-col md:flex-row justify-center h-auto md:h-[400px] mt-0  md:mt-5 gap-4 items-center">
         <OurSelections />

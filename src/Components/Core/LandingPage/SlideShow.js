@@ -33,7 +33,7 @@ const slideImages = [
 
 function Slideshow() {
     return (
-      <div className="slide-container mb-8 mt-20 md:mt-0 md:mb-16 shadow-md shadow-richblack-500">
+      <div className="slide-container mb-8 pt-24  md:mb-16 shadow-md shadow-richblack-500">
         <Slide>
          {slideImages.map((slideImage, index)=> (
             <div key={index}>

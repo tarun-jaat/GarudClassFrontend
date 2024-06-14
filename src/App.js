@@ -2,34 +2,55 @@ import React from "react";
 import './App.css'
 import { Routes, Route } from "react-router-dom";
 
-import Login from "./Components/Core/Auth/Login";
+import LoginForm from "./Components/Core/Auth/Login";
 import OpenRoute from "./Components/Core/Auth/OpenRoute";
 import PrivateRoute from "./Components/Core/Auth/PrivateRoute";
 import AddUserFeeData from "./Pages/Admin/AddUserFeeData";
 import Main from "./Pages/LandingPage/Main";
-import Navbar from "./Components/Common/Navbar";
-import RaiseAnyQuery from "./Components/Common/RaiseAnyQuery";
+import SignUpForm from "./Components/Core/Auth/SignUpForm";
+import VerifyEmail from "./Components/Core/Auth/VerifyEmail";
+// import Navbar from "./Components/Common/Navbar";
+// import RaiseAnyQuery from "./Components/Common/RaiseAnyQuery";
 function App() {
+
+  
+
+
   return (
     <div className="w-full min-h-screen bg-white flex flex-col font-inter">
-<Navbar/>
-<RaiseAnyQuery/>
 <div className=" m-0 md:mt-[90px]">
     <Routes >
       <Route
-        path="/login"
+        path="/"
         element={
           <OpenRoute>
-            <Login />
+            <Main/>
           </OpenRoute>
         }
       /> 
+      
       <Route
-      path="/"
+      path="/signup"
       element={
         <OpenRoute>
-          <Main/>
+          <SignUpForm/>
         </OpenRoute>
+      }
+      />
+      <Route
+      path="/login"
+      element={
+        <OpenRoute>
+          <LoginForm/>
+        </OpenRoute>
+      }
+      />
+        <Route
+      path="/verify-email"
+      element={
+        <OpenRoute>
+          <VerifyEmail/>
+       </OpenRoute>
       }
       />
       {/* <Route
