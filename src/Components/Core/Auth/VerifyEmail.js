@@ -1,5 +1,5 @@
 import React from "react";
-import logo from '../../../Assests/Logos/Logo2.png'
+import logo from "../../../Assests/Logos/Logo2.png";
 import { useEffect, useState } from "react";
 import OtpInput from "react-otp-input";
 import { Link } from "react-router-dom";
@@ -9,38 +9,53 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendOtp, signUp } from "../../../Services/Operations/authApi";
 import { useNavigate } from "react-router-dom";
 import {
-
   MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
-//   MDBCard,
-//   MDBRadio,
-//   MDBCardBody,
-//   MDBInput,
-//   MDBCheckbox,
-//   MDBIcon,
+  //   MDBCard,
+  //   MDBRadio,
+  //   MDBCardBody,
+  //   MDBInput,
+  //   MDBCheckbox,
+  //   MDBIcon,
 } from "mdb-react-ui-kit";
 import "./Auth.css";
 function VerifyEmail() {
+  const [otp, setOtp] = useState("");
+  const { signupData, loading } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const [otp, setOtp] = useState("");
-    const { signupData, loading } = useSelector((state) => state.auth);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    
-    useEffect(() => {                // Only allow access of this route when user has filled the signup form
-       if(!signupData) navigate("/signup");
-    }, []);
-  
-    const handleVerifyAndSignup = (e) => {
-      e.preventDefault();
-      const { accountType,  firstName, lastName, email, password, confirmPassword, } = signupData;
-  
-      dispatch(
-        signUp( accountType,  firstName, lastName, email, password, confirmPassword,  otp, navigate )
+  useEffect(() => {
+    // Only allow access of this route when user has filled the signup form
+    if (!signupData) navigate("/signup");
+  }, []);
+
+  const handleVerifyAndSignup = (e) => {
+    e.preventDefault();
+    const {
+      accountType,
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+    } = signupData;
+
+    dispatch(
+      signUp(
+        accountType,
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+        otp,
+        navigate
       )
-    };
+    );
+  };
 
   return (
     <MDBContainer
@@ -107,19 +122,36 @@ function VerifyEmail() {
                   gap: "0 6px",
                 }}
               />
-              <MDBBtn onClick={handleVerifyAndSignup} className="w-100 md:py-3  mb-4" size="lg">
+              <MDBBtn
+                onClick={handleVerifyAndSignup}
+                className="w-100 md:py-3  mb-4"
+                size="lg"
+              >
                 Verify Email
               </MDBBtn>
             </form>
             <div className="mt-2 flex items-center justify-between">
-                <Link to="/signup">
-                  <p className="text-richblack-600 flex items-center gap-x-2"> <BiArrowBack /> Back To Signup </p>
-                </Link>
-                <button className="flex items-center text-blue-100 gap-x-2" onClick={() => dispatch(sendOtp(signupData.email , navigate))}> <RxCountdownTimer /> Resend it </button>          
-              </div>
-              <p className="my-5 text-richblack-600 rounded-xl bg-opacity-10 p-2"><span className="border-2 border-blue-100 font-bold   text-black p-1 rounded-lg m-1">Note :</span>If you haven't received the verification email, please check your spam folder or click the button above to resend it.
-</p>
-
+              <Link to="/signup">
+                <p className="text-richblack-600 flex items-center gap-x-2">
+                  {" "}
+                  <BiArrowBack /> Back To Signup{" "}
+                </p>
+              </Link>
+              <button
+                className="flex items-center text-blue-100 gap-x-2"
+                onClick={() => dispatch(sendOtp(signupData.email, navigate))}
+              >
+                {" "}
+                <RxCountdownTimer /> Resend it{" "}
+              </button>
+            </div>
+            <p className="my-5 text-richblack-600 rounded-xl bg-opacity-10 p-2">
+              <span className="border-2 border-blue-100 font-bold   text-black p-1 rounded-lg m-1">
+                Note :
+              </span>
+              If you haven't received the verification email, please check your
+              spam folder or click the button above to resend it.
+            </p>
           </div>
         </div>
       </MDBRow>

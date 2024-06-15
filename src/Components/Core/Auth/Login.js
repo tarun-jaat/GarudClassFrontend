@@ -9,11 +9,8 @@ import {
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBCard,
-  MDBCardBody,
   MDBInput,
   MDBCheckbox,
-  MDBIcon,
 } from "mdb-react-ui-kit";
 import "./Auth.css";
 
@@ -74,8 +71,8 @@ function LoginForm() {
             className="position-absolute shadow-5-strong"
           ></div>
 
-<div className="my-5 p-4  rounded-3xl mb-8 bg-glass">
-<div className="mr-4 flex mx-auto items-center gap-6">
+          <div className="my-5 p-4  rounded-3xl mb-8 bg-glass">
+            <div className="mr-4 flex mx-auto items-center gap-6">
               <img src={logo} alt="Logo" className="mx-auto h-16 md:h-24 " />
               <p className="text-md font-bold font-edu-sa md:text-3xl text-richblack-700">
                 Empowering Futures Through{" "}
