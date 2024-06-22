@@ -10,6 +10,7 @@ import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import { BiSolidPurchaseTag } from "react-icons/bi";
 import { SiPytest } from "react-icons/si";
+import { PiTargetFill } from "react-icons/pi";
 
 export const SideBarData=[
     {
@@ -59,6 +60,12 @@ export const OtherData = [
       icon: <MdConnectWithoutContact/>,
     },
     {
+      title: "Contact",
+      path: '/dashboard/contact',
+      type: ACCOUNT_TYPE.INSTRUCTOR,
+      icon: <MdConnectWithoutContact/>,
+    },
+    {
       title: "Finance",
       path: "/dashboard/finance",
       type: ACCOUNT_TYPE.ADMIN,
@@ -71,8 +78,14 @@ export const OtherData = [
       icon: <FaUserFriends/>,
     },
     {
+      title: "Team",
+      path: "dashboard/team",
+      type: ACCOUNT_TYPE.INSTRUCTOR,
+      icon: <FaUserFriends/>,
+    },
+    {
       title: "Enrolled Courses",
-      path: "dashboard/mycourse",
+      path: "dashboard/course",
       type: ACCOUNT_TYPE.STUDENT,
       icon: <BiSolidPurchaseTag/>,
     },
@@ -81,6 +94,18 @@ export const OtherData = [
       path: "dashboard/test-series",
       type: ACCOUNT_TYPE.STUDENT,
       icon: <SiPytest/>,
+    },
+    {
+      title: "Events",
+      path: "dashboard/events",
+      type: ACCOUNT_TYPE.STUDENT,
+      icon: <PiTargetFill/>,
+    },
+    {
+      title: "Events",
+      path: "dashboard/events",
+      type: ACCOUNT_TYPE.INSTRUCTOR,
+      icon: <PiTargetFill/>,
     },
     
 

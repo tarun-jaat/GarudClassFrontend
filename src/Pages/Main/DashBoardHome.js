@@ -2,6 +2,7 @@ import React from "react";
 import { dashBoardCardData } from "../../Data/DashBoardCard.data";
 import { MdInsights } from "react-icons/md";
 import { useSelector } from "react-redux";
+import Instructor from "../../Components/Dashboard/InstructorDashboard/InstructorDashboard";
 
 function DashBoardHome() {
   const { user } = useSelector((state) => state.profile);
@@ -31,8 +32,12 @@ function DashBoardHome() {
               </p>
             </div>
           ))}
-        </div>
+          
+        </div> 
       )}
+      {user?.accountType==='Instructor' &&(
+            <Instructor/>
+          )}
     </div>
   );
 }

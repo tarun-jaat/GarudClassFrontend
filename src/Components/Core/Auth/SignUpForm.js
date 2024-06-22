@@ -7,18 +7,18 @@ import logo from "../../../Assests/Logos/Logo2.png";
 import { useDispatch } from "react-redux";
 import { setSignupData } from "../../../Slices/AuthSlice";
 import { sendOtp } from "../../../Services/Operations/authApi";
-import { ACCOUNT_TYPE } from "../../../Utils/Constants";
+// import { ACCOUNT_TYPE } from "../../../Utils/Constants";
 import {
   MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBCard,
+  // MDBCard,
   MDBRadio,
-  MDBCardBody,
+  // MDBCardBody,
   MDBInput,
-  MDBCheckbox,
-  MDBIcon,
+  // MDBCheckbox,
+  // MDBIcon,
 } from "mdb-react-ui-kit";
 import "./Auth.css";
 function SignUpForm() {

@@ -5,12 +5,16 @@ import { Outlet } from "react-router-dom";
 
 function DashBoard() {
   return (
-    <div className="relative flex min-h-[calc(100vh-3.5rem)] bg-[#F5F6FA]">
+    <div className="relative flex min-h-[calc(100vh-1rem)] bg-[#F5F6FA] ">
+      <div className="w-[15%]">
       <SideBar />
-      <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto">
-        <div className="">
+      </div>
+      <div className="h-[calc(100vh-3.5rem)] w-[10%] flex-1 overflow-auto">
+        <div className="mt-0">
           <Navbar />
+          <div className="mt-80px">
           <Outlet />
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { ACCOUNT_TYPE } from "../Utils/Constants";
 export const ProfileDropDown = [
   {
     title: "Profile",
-    path: "/dashboard/Profile",
+    path: "/dashboard/setting/profile",
   },
   {
     title: "Insights",
@@ -17,7 +17,7 @@ export const ProfileDropDown = [
   },
   {
     title: "Add Course",
-    path: "/dashboard/AddCourse",
+    path: "/dashboard/course",
     type: ACCOUNT_TYPE.INSTRUCTOR,
   },
   {

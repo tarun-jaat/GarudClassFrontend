@@ -20,9 +20,7 @@ function SideBar() {
   const [confirmationModal, setConfirmationModal] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const settingnavigate = () => {
-    window.location.href = "/dashboard/settings";
-  };
+
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname);
   };
@@ -42,7 +40,7 @@ function SideBar() {
   // };
 
   return (
-    <div className="h-[calc(100vh-3.5rem)] justify-between min-w-[220px] bg-white">
+    <div className=" static h-[calc(100vh-1rem)] justify-between min-w-[220px] bg-white">
       <Link to={"/dashboard"}>
         <img src={logo} alt="logo" className="h-16 md:block hidden mx-auto" />
       </Link>
@@ -95,7 +93,7 @@ function SideBar() {
               <Link
                 to={link.path}
                 key={index}
-                className={`flex mt-2 md:px-4 p-1 rounded-xl items-center justify-start md:gap-4 text-black
+                className={`flex md:px-4 p-1 rounded-xl items-center justify-start md:gap-4 text-black
                 ${
                   matchRoute(link.path)
                     ? " text-[#4880ff]"
@@ -113,10 +111,10 @@ function SideBar() {
         })}
       </div>
       <div className="horizontal-line"></div>
-      <div>
+      <div className=" absolute bottom-1">
         <Link
           className="px-8 py-2 flex items-center gap-x-2  text-md font-medium text-richblack-800"
-          to={"dashboard/setting"}
+          to={"/dashboard/setting"}
         >
           <span className="text-xl">
             <IoSettingsOutline />
@@ -136,7 +134,7 @@ function SideBar() {
             })
           }
         >
-          <div className="flex items-center gap-x-2">
+          <div className="flex bg-pink-50 py-2 px-1 text-center rounded-xl w-[150px] text-pink-600 justify-center items-center gap-x-2">
             <IoIosLogOut className="text-xl" />
             <span>Logout</span>
           </div>

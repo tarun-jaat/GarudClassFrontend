@@ -80,6 +80,44 @@ export function signUp(
   }
 }
 
+
+export function AddUser(
+  accountType,
+  firstName,
+  lastName,
+  email,
+  password,
+  confirmPassword,
+  otp,
+  navigate
+){
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
+    dispatch(setLoading(true))
+    try {
+      const response = await apiConnector("POST", SIGNUP_API, {
+        accountType,
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+        otp})
+        console.log("Add use API response ..",response)
+        if(!response.data.success){
+          throw new Error(response.data.message)
+        }
+        toast.success("user Added into the Database")
+      }
+      catch(error){
+        console.log('error', error)
+        toast.error("Failed to add user")
+
+      }
+      dispatch(setLoading(false))
+  }
+}
+
 export function login(email, password, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")

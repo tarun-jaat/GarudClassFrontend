@@ -104,7 +104,6 @@ function Main() {
       </div>
       <Banner/>
       <Social />
-      
       <Footer/>
     </div>
   );

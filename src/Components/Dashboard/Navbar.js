@@ -14,7 +14,7 @@ function Navbar() {
     return null;
   }
   return (
-    <div className="h-[70px] b px-3 py-2 float-right bg-white w-full flex items-center justify-between">
+    <div className="h-[70px] fixed z-50 b px-3 py-2 float-right bg-white w-[85%] flex items-center justify-between">
      
 
       {/* <img src={logo} alt="logo" className="h-12 aspect-square md:hidden "/> */}

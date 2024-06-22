@@ -238,7 +238,7 @@ details > summary::-webkit-details-marker {
   @apply text-[14px] text-black;
 }
 .form-style {
-  @apply rounded-lg border-2 bg-blue-5 border-richblack-400 p-2 text-[16px] leading-[20px] text-black shadow-[0_1px_0_0] shadow-white/50 placeholder:text-richblack-800 focus:outline-1 focus:outline-brown-400;
+  @apply rounded-lg border-2 bg-[#ededed] bg-opacity-35 border-richblack-300 p-2 text-[16px]  leading-[20px] text-richblack-800  shadow-richblack-700 placeholder:text-richblack-300 placeholder:text-sm focus:outline-1 focus:bg-white focus:outline-[#4880FF];
 }
 .section_heading {
   @apply text-2xl font-bold text-richblack-5 lg:text-4xl;
