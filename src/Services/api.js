@@ -70,3 +70,22 @@ export const settingsEndpoints = {
   CHANGE_PASSWORD_API: BASE_URL + "/auth/changepassword",
   DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
 }
+
+
+export const quizEndpoints={
+  CREATE_QUIZ_API:BASE_URL+"/quiz/createQuiz",
+  GET_ALL_QUIZ_API:BASE_URL+"/quiz/getAllQuizzes",
+
+
+  ADD_QUESTIONS_TO_QUIZ:BASE_URL+"/quiz/:quizId/questions",
+  GET_QUIZ_DETAILS_API:BASE_URL+"/quiz/find",
+
+
+
+  UPDATE_QUIZ_API:BASE_URL+"/quiz/updateQuiz",
+  DELETE_QUIZ_API:BASE_URL+"/quiz/deleteQuiz",
+  GET_SINGLE_QUIZ_DETAILS_API:BASE_URL+"/quiz",
+  SUBMIT_QUIZ_API:BASE_URL+"/quiz/submitQuiz",
+  GET_QUIZ_RESULT_API:BASE_URL+"/quiz/getQuizResult",
+  GET_QUIZ_PROGRESS_API:BASE_URL+"/quiz/getQuizProgress"
+}

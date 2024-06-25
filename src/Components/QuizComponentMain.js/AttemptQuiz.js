@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {Alert} from '@mui/material'
 import "./Style.css";
-import QuestionData from "../Data/QuestionData.json";
+import QuestionData from "../../Data/QuestionData.json";
 function AttemptQuiz() {
   const { user } = useSelector((state) => state.profile);
   const [timeRemaining, setTimeRemaining] = useState(360); // 1 hour in seconds

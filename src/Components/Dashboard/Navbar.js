@@ -18,14 +18,28 @@ function Navbar() {
      
 
       {/* <img src={logo} alt="logo" className="h-12 aspect-square md:hidden "/> */}
-      <div className="group md:[500px] z-50  w-[10px] ">
-        <svg className="icon" aria-hidden="true" viewBox="0 0 24 24">
-          <g>
-            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
-          </g>
-        </svg>
-        <input placeholder="Search" type="search" className="input md:w-[500px] md:hover:w-[400px] hover:w-[220px] w-[20px]" />
-      </div>
+      <div class="relative">
+  <input
+    placeholder="Search..."
+    class="input shadow-lg focus:border-2 border-gray-300 px-5 py-3 rounded-xl w-56 transition-all focus:w-64 outline-none"
+    name="search"
+    type="search"
+  />
+  <svg
+    class="size-6 absolute top-3 right-3 text-gray-500"
+    stroke="currentColor"
+    stroke-width="1.5"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    ></path>
+  </svg>
+</div>
       <div className="flex items-center gap-3">
       {user.accountType === 'Student' ? (
           <div className="">

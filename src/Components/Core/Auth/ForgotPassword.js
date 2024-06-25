@@ -9,11 +9,7 @@ import {
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBCard,
-  MDBCardBody,
   MDBInput,
-  MDBCheckbox,
-  MDBIcon,
 } from "mdb-react-ui-kit";
 import "./Auth.css";
 import { getPasswordResetToken } from "../../../Services/Operations/authApi";

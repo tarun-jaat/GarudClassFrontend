@@ -6,7 +6,7 @@ import QuizBuilderForm from './QuizBuilder/QuizBuilderForm'
 import PublishQuiz from './PublishQuiz' 
 const RenderSteps = () => {
 
-  const { step } = useSelector((state) => state.course)
+  const { step } = useSelector((state) => state.quiz)
 
 
   const steps = [

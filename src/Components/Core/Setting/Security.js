@@ -29,9 +29,9 @@ export default function Security() {
     <>
       <form onSubmit={handleSubmit(submitPasswordForm)}>
         
-        <div className="my-2 flex flex-col gap-y-6 text-richblack-300 rounded-md border-[1px] border-richblack-700 bg-richblue-800 p-8 px-12">
+        <div className="my-2 flex flex-col gap-y-6 text-richblack-300 mx-4 rounded-md border-[1px] border-richblack-700 bg-white p-8 px-12">
          
-          <h2 className="text-lg font-semibold text-richblack-5">Password</h2>
+          <h2 className="text-lg font-semibold text-richblack-500">Password</h2>
           <div className="flex flex-col gap-5 lg:flex-row">
           
             <div className="relative flex flex-col gap-2 lg:w-[48%]">
@@ -57,7 +57,7 @@ export default function Security() {
         </div>
 
         <div className="flex justify-center gap-2">
-          <button className="cursor-pointer rounded-md bg-richblue-700 py-2 px-5 font-semibold text-richblack-50" onClick={() => {navigate("/dashboard/my-profile")}} >
+          <button className="cursor-pointer rounded-md bg-white py-2 px-5 font-semibold text-richblack-500 border" onClick={() => {navigate("/dashboard/setting")}} >
             Cancel
           </button>
           <IconBtn type="submit" text="Update" />

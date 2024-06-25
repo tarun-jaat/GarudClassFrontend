@@ -22,8 +22,10 @@ import Profile from "./Components/Core/Setting/Profile";
 import Account from "./Components/Core/Setting/Account";
 import Security from "./Components/Core/Setting/Security";
 import SettingHome from "./Components/Core/Setting/SettingHome";
-import AttemptQuiz from "./QuizComponentMain.js/AttemptQuiz";
+import AttemptQuiz from "./Components/QuizComponentMain.js/AttemptQuiz";
 import User from "./Pages/Main/User";
+import SingleQuizDetails from "./Components/QuizComponentMain.js/SingleQuizDetails";
+import CreateQuiz from "./Components/Dashboard/AddQuiz";
 // import Navbar from "./Components/Common/Navbar";
 // import RaiseAnyQuery from "./Components/Common/RaiseAnyQuery";
 
@@ -111,21 +113,25 @@ function App() {
             }
           >
             <Route index element={<DashBoardHome />} />
-            <Route path="user" element={<User/>}/>
+            <Route path="user" element={<User />} />
             <Route path="course" element={<Course />} />
-            <Route path="quiz" element={<Quiz />}>
+            <Route path="quiz">
+              <Route index element={<Quiz />} />
+              <Route path=":id" element={<SingleQuizDetails />} />
+              <Route path="create-quiz" element={<CreateQuiz />} />
             </Route>
             <Route path="inbox" element={<Inbox />} />
             <Route path="addcourse" element={<AddCourse />} />
-            <Route path="setting" element={<Settings />}>
-              <Route index element={<SettingHome />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="account" element={<Account />} />
-              <Route path="security" element={<Security />} />
+            <Route path="setting">
+              <Route element={<Settings />}>
+                <Route index element={<SettingHome />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="account" element={<Account />} />
+                <Route path="security" element={<Security />} />
+              </Route>
             </Route>
           </Route>
           <Route path="attempt-quiz" element={<AttemptQuiz />} />
-
 
           {/* <Route
         path="/fee-data"

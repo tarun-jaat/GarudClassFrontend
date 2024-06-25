@@ -4,7 +4,6 @@ import "./Setting.css";
 import { GrStatusCriticalSmall } from "react-icons/gr";
 
 import moment from "moment";
-import SideBarSetting from "./SideBarSetting";
 
 function SettingHome(props) {
   const { user } = useSelector((state) => state.profile);
@@ -89,7 +88,6 @@ function SettingHome(props) {
       <p className="text-lg font-semibold text-richblack-400">Gender:-</p>
       <p>{user.additionalDetails.gender}</p>
       </div>
-      <SideBarSetting/>
     </div>
   );
 }
