@@ -7,3 +7,8 @@ export const ACCOUNT_TYPE = {
     DRAFT: "Draft",
     PUBLISHED: "Published",
   }
+
+  export const QUIZ_STATUS = {
+    DRAFT: "Draft",
+    PUBLISHED: "Published",
+  }

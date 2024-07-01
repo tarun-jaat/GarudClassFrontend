@@ -5,7 +5,7 @@ import { apiConnector } from "../apiConnecter"
 import { profileEndpoints } from "../api"
 import { logout } from "./authApi"
 
-const { GET_USER_DETAILS_API, GET_USER_ENROLLED_COURSES_API, GET_INSTRUCTOR_DATA_API } = profileEndpoints
+const { GET_USER_DETAILS_API, GET_USER_ENROLLED_COURSES_API, GET_INSTRUCTOR_DATA_API,GET_USER_ENROLLED_QUIZ_API } = profileEndpoints
 
 export function getUserDetails(token, navigate) {
   return async (dispatch) => {
@@ -34,6 +34,38 @@ export function getUserDetails(token, navigate) {
   }
 }
 
+export async function getUserEnrolledQuiz(token) {
+  const toastId = toast.loading("Loading...")
+  let result = []
+  try {
+    console.log("BEFORE Calling BACKEND API FOR ENROLLED QUIZ");
+    const response = await apiConnector(
+      "GET",
+      GET_USER_ENROLLED_COURSES_API,
+      null,
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    )
+    console.log("AFTER Calling BACKEND API FOR ENROLLED QUIZ");
+    // console.log(
+    //   "GET_USER_ENROLLED_COURSES_API API RESPONSE............",
+    //   response
+    // )
+
+    if (!response.data.success) {
+      throw new Error(response.data.message)
+    }
+    result = response.data.data
+  } catch (error) {
+    console.log("GET_USER_ENROLLED_QUIZ_API API ERROR............", error)
+    toast.error("Could Not Get QUIZ ")
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+
 export async function getUserEnrolledCourses(token) {
   const toastId = toast.loading("Loading...")
   let result = []
@@ -41,7 +73,7 @@ export async function getUserEnrolledCourses(token) {
     console.log("BEFORE Calling BACKEND API FOR ENROLLED COURSES");
     const response = await apiConnector(
       "GET",
-      GET_USER_ENROLLED_COURSES_API,
+      GET_USER_ENROLLED_QUIZ_API,
       null,
       {
         Authorization: `Bearer ${token}`,
@@ -64,6 +96,7 @@ export async function getUserEnrolledCourses(token) {
   toast.dismiss(toastId)
   return result
 }
+
 
 export async function getInstructorData(token) {
   const toastId = toast.loading("Loading...");

@@ -54,6 +54,7 @@ export const categories = {
 export const profileEndpoints = {
   GET_USER_DETAILS_API: BASE_URL + "/profile/getUserDetails",
   GET_USER_ENROLLED_COURSES_API: BASE_URL + "/profile/getEnrolledCourses",
+  GET_USER_ENROLLED_QUIZ_API: BASE_URL + "/profile/getEnrolledQuiz",
   GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/getInstructorDashboardDetails",
 }
 
@@ -75,17 +76,22 @@ export const settingsEndpoints = {
 export const quizEndpoints={
   CREATE_QUIZ_API:BASE_URL+"/quiz/createQuiz",
   GET_ALL_QUIZ_API:BASE_URL+"/quiz/getAllQuizzes",
+  UPDATE_QUIZ_API:BASE_URL+"/quiz/updateQuiz",
 
 
-  ADD_QUESTIONS_TO_QUIZ:BASE_URL+"/quiz/:quizId/questions",
+  ADD_QUESTIONS_TO_QUIZ:BASE_URL+"/quiz/questions",
   GET_QUIZ_DETAILS_API:BASE_URL+"/quiz/find",
 
 
 
-  UPDATE_QUIZ_API:BASE_URL+"/quiz/updateQuiz",
   DELETE_QUIZ_API:BASE_URL+"/quiz/deleteQuiz",
   GET_SINGLE_QUIZ_DETAILS_API:BASE_URL+"/quiz",
   SUBMIT_QUIZ_API:BASE_URL+"/quiz/submitQuiz",
   GET_QUIZ_RESULT_API:BASE_URL+"/quiz/getQuizResult",
-  GET_QUIZ_PROGRESS_API:BASE_URL+"/quiz/getQuizProgress"
+  GET_QUIZ_PROGRESS_API:BASE_URL+"/quiz/getQuizProgress",
+
+  
+  START_QUIZ_API:BASE_URL+"/quiz/quizzes",
+  SUBMIT_ANSWER_API:BASE_URL+"/quiz/conduct-quizzes",
+
 }

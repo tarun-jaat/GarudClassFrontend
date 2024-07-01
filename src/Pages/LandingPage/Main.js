@@ -17,6 +17,7 @@ import Footer from "../../Components/Core/LandingPage/Footer";
 import ScrollReveal from 'scrollreveal'
 import RaiseAnyQuery from "../../Components/Common/RaiseAnyQuery";
 import Navbar from "../../Components/Common/Navbar";
+import MainComponent from "../../Components/Core/LandingPage/MainComponent";
 function Main() {
 
   const targetRef = useRef(null);
@@ -34,11 +35,17 @@ function Main() {
     ScrollReveal().reveal(targetRef.current, config);
   }, []); 
   return (
-    <div className="Landing-page h-screen w-full">
-      <Navbar/>
-      <RaiseAnyQuery/>
+    <div className="Landing-page  w-full">
+            <Navbar/>
+
       <Slideshow  />
-      <div ref={targetRef} className="w-full md:px-10 px-2 flex flex-col md:flex-row justify-center h-auto md:h-[400px] mt-0  md:mt-5 gap-4 items-center">
+      <MainComponent/>
+      <RaiseAnyQuery/>
+
+      {/*
+      <div className="">
+      </div> */}
+      <div ref={targetRef} className="w-full md:px-10 px-2 flex flex-col md:flex-row justify-center h-auto md:h-[400px]  gap-4 items-center">
         <OurSelections />
         <Anouncement />
       </div>

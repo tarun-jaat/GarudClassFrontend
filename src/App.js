@@ -22,12 +22,16 @@ import Profile from "./Components/Core/Setting/Profile";
 import Account from "./Components/Core/Setting/Account";
 import Security from "./Components/Core/Setting/Security";
 import SettingHome from "./Components/Core/Setting/SettingHome";
-import AttemptQuiz from "./Components/QuizComponentMain.js/AttemptQuiz";
+// import AttemptQuiz from "./Components/QuizPlateform/";
 import User from "./Pages/Main/User";
 import SingleQuizDetails from "./Components/QuizComponentMain.js/SingleQuizDetails";
 import CreateQuiz from "./Components/Dashboard/AddQuiz";
+import ConductQuiz from './Components/QuizPlateform'
+import Aboutus from "./Components/Common/Aboutus";
+import Feeds from "./Components/Core/LandingPage/Feeds";
 // import Navbar from "./Components/Common/Navbar";
 // import RaiseAnyQuery from "./Components/Common/RaiseAnyQuery";
+// import Aggrement from "./Components/QuizComponentMain.js/Aggrement";
 
 const routes = [
   {
@@ -130,9 +134,12 @@ function App() {
                 <Route path="security" element={<Security />} />
               </Route>
             </Route>
+            <Route path="about-us" element={<Aboutus/>}/>
+            <Route path="feeds" element={<Feeds/>}/>
           </Route>
-          <Route path="attempt-quiz" element={<AttemptQuiz />} />
-
+          <Route path="/attempt-quiz" element={<ConductQuiz/>}/>
+          {/* <Route path="attempt-quiz" element={<AttemptQuiz />} />
+          <Route path="aggrement" element={<Aggrement/>}/> */}
           {/* <Route
         path="/fee-data"
         element={

@@ -19,6 +19,10 @@
 
 } */
 
+.animate-rotate {
+  animation: rotate 5s linear infinite;
+}
+
 
 .card svg {
     height: 25px;
@@ -139,5 +143,25 @@
   
     100% {
       transform: scale(1);
+    }
+  }
+
+
+  .animation {
+    animation: resize 10s infinite;
+  }
+  
+  @keyframes resize {
+    0% {
+      width: 180px;
+      height: 180px;
+    }
+    50% {
+      width: 200px;
+      height: 200px;
+    }
+    100% {
+      width: 180px;
+      height: 180px;
     }
   }

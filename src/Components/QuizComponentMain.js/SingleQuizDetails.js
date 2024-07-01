@@ -19,6 +19,8 @@ import { addToCart } from "../../Slices/cartSlice"
 import { ACCOUNT_TYPE } from "../../Utils/Constants"
 import ConfirmationModal from "../Common/ConfirmationModal"
 
+import { setQuiz } from "../../Slices/QuizSlice";
+
 
 import moment from "moment";
 import { TiStopwatch } from "react-icons/ti";
@@ -31,7 +33,7 @@ function SingleQuizDetails() {
   const [confirmationModal, setConfirmationModal] = useState(null)
 
   const { id } = useParams();
-  const [quiz, setQuiz] = useState({});
+  const [quiz, setQuizDetailArr] = useState({});
   const [avgReviewCount, setAvgReviewCount] = useState(0);
   const [response, setResponse] = useState(null);
 
@@ -45,7 +47,7 @@ function SingleQuizDetails() {
     const getQuizDetails = async () => {
       try {
         const res = await fetchquizDetails(quizId, token);
-        setQuiz(res);
+        setQuizDetailArr(res);
       } catch (error) {
         console.log(error);
       }
@@ -59,11 +61,16 @@ function SingleQuizDetails() {
   }, [response]);
 
 
-  // const handleBuyCourse = () => {
-  //   if(token) {
-  //     buyCourse(token, [quizId], user, navigate, dispatch)
-  //     return
-  //   }
+  const handleBuyCourse = () => {
+    if (user && quiz?.data?.studentsEnrolled.includes(user?._id)) {
+      dispatch(setQuiz(quiz));
+    // dispatch(setStep(2));
+      navigate("/attempt-quiz");
+    } else {
+      console.log("hii")
+
+    }
+  };
     // setConfirmationModal({
     //   text1: "You are not logged in!",
     //   text2: "Please login to Purchase Course.",
@@ -257,15 +264,21 @@ function SingleQuizDetails() {
         <img src={quiz?.data?.thumbnailImage} alt={quiz?.data?.testName}  className="max-h-[200px] shadow-md shadow-richblack-200 min-h-[180px] w-[300px] overflow-hidden rounded-2xl object-cover md:max-w-full"/>
        
         <div className="px-4">
+        {(!user || !quiz?.data?.studentsEnrolled.includes(user?._id)) && (
 
           <div className="space-x-3 pb-4 text-richblack-500 text-2xl font-semibold">
             Rs. {quiz?.data?.price}
+
           </div>
+        )}
+
           <div className="flex flex-col gap-3">
             <button className="bg-blue-100 text-white shadow-md shadow-richblack-300 font-bold rounded-xl py-2"
-              // onClick = {user && quiz?.data?.studentsEnrolled.includes(user?._id) ? () => navigate("/dashboard/enrolled-courses") : handleBuyCourse}
+              // onClick = {user && quiz?.data?.studentsEnrolled.includes(user?._id) ? () => navigate("/attempt-quiz") :
+               onClick={handleBuyCourse}  
+                // }
                >
-              {user && quiz?.data?.studentsEnrolled.includes(user?._id) ? "Go To Course" : "Buy Now"}
+              {user && quiz?.data?.studentsEnrolled.includes(user?._id) ? "Attempt Quiz" : "Buy Now"}
             </button>
             {(!user || !quiz?.data?.studentsEnrolled.includes(user?._id)) && (
               <button onClick={handleAddToCart} className="border-2 border-blue-100 text-black shadow-md shadow-richblack-300 rounded-xl py-2"> Add to Cart </button>

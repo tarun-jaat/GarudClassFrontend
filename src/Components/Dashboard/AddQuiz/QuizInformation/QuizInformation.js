@@ -167,7 +167,7 @@ setLoading(false)
       </div>
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-400 uppercase tracking-wider" htmlFor="QeditQuizCategory">
-          QeditQuiz Category <sup className="text-pink-200">*</sup>
+          Quiz Category <sup className="text-pink-200">*</sup>
         </label>
         <select
           {...register("category", { required: true })}

@@ -48,7 +48,7 @@ details > summary::-webkit-details-marker {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  border: 9px solid #f1f2ff;
+  border: 9px solid #00bbff8e;
   animation: spinner-bulqg1 0.8s infinite linear alternate,
     spinner-oaa3wk 1.6s infinite linear;
 }
@@ -248,4 +248,9 @@ details > summary::-webkit-details-marker {
 .badge{
   clip-path: polygon(100% 0, 83% 55%, 100% 100%, 0 100%, 16% 58%, 0 0);
   background: #ffc64a;
+}
+
+.shadow-text{
+  text-shadow: 5px 5px 10px #558abb;
+
 }

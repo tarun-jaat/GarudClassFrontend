@@ -9,12 +9,13 @@ const spanStyle = {
 }
 
 const divStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  // display: 'flex',
+  // alignItems: 'center',
+  // justifyContent: 'center',
   backgroundPosition:"center",
-  backgroundSize:"cover",
-  height: '300px',
+  backgroundSize:"fill",
+  backgroundRepeat:" no-repeat",
+  height: '400px',
 }
 const slideImages = [
   {
@@ -33,7 +34,7 @@ const slideImages = [
 
 function Slideshow() {
     return (
-      <div className="slide-container mb-8 pt-24  md:mb-16 shadow-md shadow-richblack-500">
+      <div className="slide-container shadow-md shadow-richblack-500">
         <Slide>
          {slideImages.map((slideImage, index)=> (
             <div key={index}>

@@ -10,6 +10,7 @@ import moment from 'moment';
 import { FaStar } from "react-icons/fa";
 import  GetAvgRating from '../../Utils/getAVGRating'
 import { Link } from "react-router-dom";
+import EnrolledQuiz from "../../Components/Dashboard/Quiz/EnrolledQuiz";
 // import CreateCourseForm from "./createQuiz";
 
 function Quiz() {
@@ -51,10 +52,11 @@ function Quiz() {
       </div>
       <div className=" w-full my-4 h-72 border rounded-xl bg-white ">
         <p className=" bg-blue-200 p-4 text-xl font-mono rounded-xl text-white font-bold ">
-          Quiz Enrolled
+          Quiz Enrolled 
         </p>
         <div className="flex items-center justify-center text-richblack-400">
-          <p className="mt-16">you have no Enrolled for any course </p>
+          {/* <p className="mt-16">you have no Enrolled for any course </p> */}
+          <EnrolledQuiz/>
         </div>
       </div>
       <div className="  w-full h-fit border rounded-xl bg-white ">

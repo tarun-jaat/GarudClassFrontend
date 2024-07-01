@@ -18,10 +18,10 @@ function Navbar() {
   };
 
   const handleMouseLeave = () => {
-    setOpen(false);
+    setOpen(false); 
   };
   return (
-    <div className="NavBar  fixed z-50 px-2 py-1 h-[70px] md:h-[80px] justify-between w-full flex items-center bg-white shadow-xl shadow-richblack-50">
+    <div className="sticky top-0 w-full flex justify-around items-center  bg-white border-b-[1px] z-40  shadow-xl shadow-richblack-50">
       <Link to={"/"} className="md:float-left float-right">
         <img
           src={Logo}

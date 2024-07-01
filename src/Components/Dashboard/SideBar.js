@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../Assests/Logos/Logo2.png";
 import { Link } from "react-router-dom";
-import { OtherData, SideBarData } from "../../Data/SidebarData";
+import { AboutGarudData, OtherData, SideBarData } from "../../Data/SidebarData";
 import { matchPath, useLocation } from "react-router-dom";
 import { logout } from "../../Services/Operations/authApi";
 import { setUser } from "../../Slices/ProfileSlice";
@@ -44,7 +44,7 @@ function SideBar() {
       <Link to={"/dashboard"}>
         <img src={logo} alt="logo" className="h-16 md:block hidden mx-auto" />
       </Link>
-      <div className="mt-8">
+      <div className="mt-8 mb-4">
         {SideBarData.map((link, index) => {
           if (link.type && user?.accountType !== link.type) return null;
           return (
@@ -111,9 +111,45 @@ function SideBar() {
         })}
       </div>
       <div className="horizontal-line"></div>
-      <div className=" absolute bottom-1">
+      <div className="mb-4 overflow-y-scroll h-44">
+        {AboutGarudData.map((link, index) => {
+          if (link.type && user?.accountType !== link.type) return null;
+          return (
+            <div
+              className={`${
+                matchRoute(link.path)
+                  ? " text-white border-l-4 p-1 md:px-4  border-[#4880ff]"
+                  : "bg-transparent px-4 text-black"
+              }
+`}
+            >
+              <Link
+                to={link.path}
+                key={index}
+                className={`flex md:px-4 p-1 rounded-xl items-center justify-start md:gap-4 text-black
+                ${
+                  matchRoute(link.path)
+                    ? " text-[#4880ff]"
+                    : "bg-transparent text-black"
+                }
+             `}
+              >
+                <div className="flex items-center transition duration-200 ease-in-out hover:text-[#4880FF] py-[8px] w-full md:px-2 rounded-xl hover:underline  justify-start gap-4">
+                  <span className="md:text-lg text-3xl ">{link.icon}</span>
+                  <span className="text-md md:block hidden">{link.title}</span>
+                </div>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+      <div className="horizontal-line"></div>
+
+
+
+      <div className=" p-1 md:px-4 bg-[#4880ff] w-full  ">
         <Link
-          className="px-8 py-2 flex items-center gap-x-2  text-md font-medium text-richblack-800"
+          className="px-8 py-2 font-bold flex items-center gap-x-2  text-lg text-richblack-5"
           to={"/dashboard/setting"}
         >
           <span className="text-xl">

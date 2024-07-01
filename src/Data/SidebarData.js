@@ -1,6 +1,6 @@
 import { ACCOUNT_TYPE } from "../Utils/Constants";
 import { RxDashboard } from "react-icons/rx";
-import { FaUsers } from "react-icons/fa";
+import { FaRegBell, FaUsers } from "react-icons/fa";
 import { TiMessages } from "react-icons/ti";
 import { MdOutlineAssignmentTurnedIn } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
@@ -10,7 +10,17 @@ import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import { BiSolidPurchaseTag } from "react-icons/bi";
 import { SiPytest } from "react-icons/si";
-import { PiTargetFill } from "react-icons/pi";
+import { PiChalkboardTeacher, PiTargetFill } from "react-icons/pi";
+import { ImFeed } from "react-icons/im";
+import { LuNetwork } from "react-icons/lu";
+import { GoChecklist } from "react-icons/go";
+import { HiOutlineInformationCircle } from "react-icons/hi2";
+import { FaPhoneAlt } from "react-icons/fa";
+
+
+
+
+
 
 export const SideBarData=[
     {
@@ -44,6 +54,12 @@ export const SideBarData=[
         link:"/dashboard/course",
         // type:[ACCOUNT_TYPE.ADMIN,ACCOUNT_TYPE.INSTRUCTOR,ACCOUNT_TYPE.STUDENT]   
     },
+    {
+      title:"Batches",
+      icon:<PiChalkboardTeacher/>,
+      link:"/dashboard/batches",
+      // type:[ACCOUNT_TYPE.ADMIN,ACCOUNT_TYPE.INSTRUCTOR,ACCOUNT_TYPE.STUDENT]   
+  },
 ]
 
 export const OtherData = [
@@ -111,3 +127,30 @@ export const OtherData = [
 
   ];
   
+export const AboutGarudData=[
+  {
+    title: "About Us",
+    path: "/dashboard/about-us",
+    type: ACCOUNT_TYPE.STUDENT,
+    icon:<HiOutlineInformationCircle/>
+    },
+    {
+      title: "Feeds",
+      path: "/dashboard/feeds",
+      type: ACCOUNT_TYPE.STUDENT,
+      icon: <ImFeed/>,
+      },
+      {
+        title: "contact Us",
+        path: "/dashboard/contactus",
+        type: ACCOUNT_TYPE.STUDENT,
+        icon: <FaPhoneAlt/>,
+        },
+        {
+          title: "terms and Conditions",
+          path: "/dashboard/termsandconditions",
+          type: ACCOUNT_TYPE.STUDENT,
+          icon: <GoChecklist/>,
+          }
+
+]
