@@ -210,9 +210,9 @@ details > summary::-webkit-details-marker {
 }
 
 /* Buttons */
-.yellowButton {
+/* .yellowButton {
   @apply cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900;
-}
+} */
 
 /* Swiper CSS Starts */
 /* .swiper {

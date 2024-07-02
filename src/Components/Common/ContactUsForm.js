@@ -52,7 +52,7 @@ const ContactUsForm = () => {
       onSubmit={handleSubmit(submitContactForm)}
     >
       <div className="flex flex-col md:gap-5 gap-2 lg:flex-row">
-        <div className="flex flex-col md:gap-2 lg:w-[48%]">
+        <div className="flex flex-col md:gap-1 lg:w-[48%]">
           <label htmlFor="firstname" className="lable-style">
             First Name
           </label>
@@ -176,7 +176,7 @@ const ContactUsForm = () => {
       <button
         disabled={loading}
         type="submit"
-        className={`rounded-md bg-[#00bbff] px-6 py-3 text-center text-[13px] font-bold text-white shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
+        className={`rounded-md bg-[#005eff] px-6 py-3 text-center text-[13px] font-bold text-white shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
          ${
            !loading &&
            "transition-all duration-200 hover:scale-95 hover:shadow-none"
