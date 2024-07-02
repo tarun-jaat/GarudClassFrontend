@@ -142,7 +142,7 @@ export const AboutGarudData=[
       },
       {
         title: "contact Us",
-        path: "/dashboard/contactus",
+        path: "/dashboard/contact-us",
         type: ACCOUNT_TYPE.STUDENT,
         icon: <FaPhoneAlt/>,
         },

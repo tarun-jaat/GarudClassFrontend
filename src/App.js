@@ -29,6 +29,7 @@ import CreateQuiz from "./Components/Dashboard/AddQuiz";
 import ConductQuiz from './Components/QuizPlateform'
 import Aboutus from "./Components/Common/Aboutus";
 import Feeds from "./Components/Core/LandingPage/Feeds";
+import ContactUs from "./Pages/ContactUs";
 // import Navbar from "./Components/Common/Navbar";
 // import RaiseAnyQuery from "./Components/Common/RaiseAnyQuery";
 // import Aggrement from "./Components/QuizComponentMain.js/Aggrement";
@@ -136,8 +137,10 @@ function App() {
             </Route>
             <Route path="about-us" element={<Aboutus/>}/>
             <Route path="feeds" element={<Feeds/>}/>
+            <Route path="contact-us" element={<ContactUs/>}/>
           </Route>
           <Route path="/attempt-quiz" element={<ConductQuiz/>}/>
+          
           {/* <Route path="attempt-quiz" element={<AttemptQuiz />} />
           <Route path="aggrement" element={<Aggrement/>}/> */}
           {/* <Route
