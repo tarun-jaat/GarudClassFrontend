@@ -7,15 +7,12 @@ function DashBoard() {
   
   return (
     <div className="relative flex min-h-[calc(100vh-1rem)] bg-[#F5F6FA] ">
-      <div className="w-[15%]">
       <SideBar />
-      </div>
-      <div className="h-screen w-[10%] flex-1 overflow-auto">
-        <div className="mt-0">
-          <Navbar />
-          <div className="mt-80px">
+      <Navbar/>
+
+       <div className="h-100vh- flex-1 overflow-auto">
+        <div className=" w-11/12 ">
           <Outlet />
-          </div>
         </div>
       </div>
     </div>

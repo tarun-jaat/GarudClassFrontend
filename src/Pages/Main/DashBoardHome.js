@@ -3,6 +3,8 @@ import { dashBoardCardData } from "../../Data/DashBoardCard.data";
 import { MdInsights } from "react-icons/md";
 import { useSelector } from "react-redux";
 import Instructor from "../../Components/Dashboard/InstructorDashboard/InstructorDashboard";
+import UserBanner from "../../Components/Dashboard/UserBanner";
+import ActiveCourses from "../../Components/Dashboard/ActiveCourses";
 
 function DashBoardHome() {
   const { user } = useSelector((state) => state.profile);
@@ -38,6 +40,16 @@ function DashBoardHome() {
       {user?.accountType==='Instructor' &&(
             <Instructor/>
           )}
+          {user?.accountType==='Student'&&(
+            <UserBanner/>
+          )}
+          <div className="details flex justify-between mt-8 gap-4 w-full">
+      {user?.accountType === 'Student' &&(
+    <>
+      <ActiveCourses/>
+    </>
+  )}
+      </div>
     </div>
   );
 }

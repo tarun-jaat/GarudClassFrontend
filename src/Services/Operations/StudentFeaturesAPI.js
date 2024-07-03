@@ -1,6 +1,6 @@
 import { toast } from "react-hot-toast";
-import { studentEndpoints } from "../api";
-import { apiConnector } from "../apiConnecter";
+import { apiConnector } from "../apiConnecter"
+import { studentEndpoints } from "../api"
 import { setPaymentLoading } from "../../Slices/courseSlice";
 import { resetCart } from "../../Slices/cartSlice";
 
@@ -51,7 +51,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
             currency: orderResponse.data.message.currency,
             amount: `${orderResponse.data.message.amount}`,
             order_id:orderResponse.data.message.id,
-            name:"StudyNotion",
+            name:"GarudClasses",
             description: "Thank You for Purchasing the Course",
             image:"https://tse1.mm.bing.net/th?id=OIP.0gwRvLRrWYHStwxdR-VS_QHaHa&pid=Api&P=0&h=180",
             prefill: {

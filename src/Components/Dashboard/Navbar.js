@@ -14,12 +14,12 @@ function Navbar() {
     return null;
   }
   return (
-    <div className="h-[70px] fixed z-50 b px-3 py-2 float-right bg-white w-[85%] flex items-center justify-between">
+    <div className="h-[70px] w-full fixed z-10 b px-3 py-2 float-right bg-white flex items-center justify-between">
      
 
       {/* <img src={logo} alt="logo" className="h-12 aspect-square md:hidden "/> */}
       <div class="relative">
-  <input
+  {/* <input
     placeholder="Search..."
     class="input shadow-lg focus:border-2 border-gray-300 px-5 py-3 rounded-xl w-56 transition-all focus:w-64 outline-none"
     name="search"
@@ -38,7 +38,7 @@ function Navbar() {
       stroke-linejoin="round"
       stroke-linecap="round"
     ></path>
-  </svg>
+  </svg> */}
 </div>
       <div className="flex items-center gap-3">
       {user.accountType === 'Student' ? (

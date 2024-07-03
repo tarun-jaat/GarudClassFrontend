@@ -48,10 +48,10 @@ export async function getUserEnrolledQuiz(token) {
       }
     )
     console.log("AFTER Calling BACKEND API FOR ENROLLED QUIZ");
-    // console.log(
-    //   "GET_USER_ENROLLED_COURSES_API API RESPONSE............",
-    //   response
-    // )
+    console.log(
+      "GET_USER_ENROLLED_COURSES_API API RESPONSE............",
+      response
+    )
 
     if (!response.data.success) {
       throw new Error(response.data.message)
@@ -73,22 +73,22 @@ export async function getUserEnrolledCourses(token) {
     console.log("BEFORE Calling BACKEND API FOR ENROLLED COURSES");
     const response = await apiConnector(
       "GET",
-      GET_USER_ENROLLED_QUIZ_API,
+      GET_USER_ENROLLED_COURSES_API,
       null,
       {
         Authorization: `Bearer ${token}`,
       }
     )
     console.log("AFTER Calling BACKEND API FOR ENROLLED COURSES");
-    // console.log(
-    //   "GET_USER_ENROLLED_COURSES_API API RESPONSE............",
-    //   response
-    // )
+    console.log(
+      "GET_USER_ENROLLED_COURSES_API API RESPONSE............",
+      response
+    )
 
     if (!response.data.success) {
       throw new Error(response.data.message)
     }
-    result = response.data.data
+    result = response.data.data.courses
   } catch (error) {
     console.log("GET_USER_ENROLLED_COURSES_API API ERROR............", error)
     toast.error("Could Not Get Enrolled Courses")

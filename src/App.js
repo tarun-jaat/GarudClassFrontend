@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
-
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { ACCOUNT_TYPE } from "./Utils/Constants";
 import LoginForm from "./Components/Core/Auth/Login";
 import OpenRoute from "./Components/Core/Auth/OpenRoute";
 import PrivateRoute from "./Components/Core/Auth/PrivateRoute";
@@ -26,11 +27,16 @@ import SettingHome from "./Components/Core/Setting/SettingHome";
 import User from "./Pages/Main/User";
 import SingleQuizDetails from "./Components/QuizComponentMain.js/SingleQuizDetails";
 import CreateQuiz from "./Components/Dashboard/AddQuiz";
-import ConductQuiz from './Components/QuizPlateform'
+import ConductQuiz from "./Components/QuizPlateform";
 import Aboutus from "./Components/Common/Aboutus";
 import Feeds from "./Components/Core/LandingPage/Feeds";
 import ContactUs from "./Pages/ContactUs";
 import TermsAndConditionsPage from "./Pages/TermsAndConditionsPage";
+import VideoDetails from "./Components/Dashboard/ViewCourse/VideoDetail";
+import ViewCourse from "./Pages/ViewCourse";
+import CourseDetails from "./Pages/CourseDetails";
+import Batches from "./Pages/Main/Batches";
+import Events from "./Pages/Events";
 // import Navbar from "./Components/Common/Navbar";
 // import RaiseAnyQuery from "./Components/Common/RaiseAnyQuery";
 // import Aggrement from "./Components/QuizComponentMain.js/Aggrement";
@@ -57,6 +63,11 @@ const routes = [
 ];
 
 function App() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.profile);
+
   return (
     <div className="w-full h-screen border border-pink-300 bg-white flex flex-col font-inter">
       <div className=" m-0 md:mt-[90px]">
@@ -126,6 +137,7 @@ function App() {
               <Route path=":id" element={<SingleQuizDetails />} />
               <Route path="create-quiz" element={<CreateQuiz />} />
             </Route>
+            <Route path="batches" element={<Batches/>}/>
             <Route path="inbox" element={<Inbox />} />
             <Route path="addcourse" element={<AddCourse />} />
             <Route path="setting">
@@ -136,13 +148,17 @@ function App() {
                 <Route path="security" element={<Security />} />
               </Route>
             </Route>
-            <Route path="about-us" element={<Aboutus/>}/>
-            <Route path="feeds" element={<Feeds/>}/>
-            <Route path="contact-us" element={<ContactUs/>}/>
-            <Route path="termsandconditions" element={<TermsAndConditionsPage/>}/>
+            <Route path="about-us" element={<Aboutus />} />
+            <Route path="feeds" element={<Feeds />} />
+            <Route path="contact-us" element={<ContactUs />} />
+            <Route
+              path="termsandconditions"
+              element={<TermsAndConditionsPage />}
+            />
+            <Route path="events" element={<Events/>}/>
           </Route>
-          <Route path="/attempt-quiz" element={<ConductQuiz/>}/>
-          
+          <Route path="/attempt-quiz" element={<ConductQuiz />} />
+
           {/* <Route path="attempt-quiz" element={<AttemptQuiz />} />
           <Route path="aggrement" element={<Aggrement/>}/> */}
           {/* <Route
@@ -161,6 +177,22 @@ function App() {
       >
         
       </Route> */}
+          <Route
+            element={
+              <PrivateRoute>
+                <ViewCourse />
+              </PrivateRoute>
+            }
+          >
+            {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <>
+                <Route
+                  path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
+                  element={<VideoDetails />}
+                />
+              </>
+            )}
+          </Route>
         </Routes>
       </div>
     </div>

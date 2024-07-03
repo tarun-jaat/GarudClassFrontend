@@ -38,13 +38,13 @@ function SideBar() {
   //   toast.success("Logged Out")
   //   navigate("/")
   // };
-
+ 
   return (
-    <div className=" static h-[calc(100vh-1rem)] justify-between min-w-[220px] bg-white">
-      <Link to={"/dashboard"}>
+<div class="static left-1vw z-40 top-1vw h-[calc(100%-2vw)] rounded-[16px] flex flex-col text-navbar-light-primary font-vernada overflow-hidden bg-white select-none">
+<Link to={"/dashboard"}>
         <img src={logo} alt="logo" className="h-16 md:block hidden mx-auto" />
       </Link>
-      <div className="mt-8 mb-4">
+      <div className="mt-4 mb-2">
         {SideBarData.map((link, index) => {
           if (link.type && user?.accountType !== link.type) return null;
           return (
@@ -59,7 +59,7 @@ function SideBar() {
               <Link
                 to={link.link}
                 key={index}
-                className={`flex mt-2 md:px-4 p-1 rounded-xl items-center justify-start md:gap-4 text-black
+                className={`flex mt-2 md:px-4 p-1 rounded-xl items-center justify-start md:gap-2 text-black
                 ${
                   matchRoute(link.link)
                     ? " text-white  bg-[#4880ff]"
@@ -78,7 +78,7 @@ function SideBar() {
       </div>
       <div className="horizontal-line"></div>
 
-      <div className="mb-4">
+      <div className="mb-2">
         {OtherData.map((link, index) => {
           if (link.type && user?.accountType !== link.type) return null;
           return (
