@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import BasicBreadcrumbs from "../../Components/Dashboard/BreadCramps";
 import { Button } from "@mui/material";
 import EnrolledCourses from "../../Components/Dashboard/EnrolledCourse";
+import MyCourses from "../../Components/Dashboard/myCourses";
 export default function Course() {
   const { user } = useSelector((state) => state.profile);
 
@@ -22,7 +23,11 @@ export default function Course() {
           </Button>
         ) : null}
       </div>
-      <EnrolledCourses/>
-    </div>
+      {user?.accountType === "Student" ? (
+        <EnrolledCourses />
+      ) : (
+        <MyCourses />
+      )}
+      </div>
   )
 }

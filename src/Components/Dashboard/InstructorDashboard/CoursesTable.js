@@ -40,19 +40,19 @@ export default function CoursesTable({ courses, setCourses }) {
 
   return (
     <>
-      <Table className="rounded-xl border border-richblack-800 ">
+      <Table className="rounded-xl border border-richblack-800 bg-white ">
         <Thead>
-          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
+          <Tr className="flex gap-x-10 rounded-t-md border-b bg-blue-200 border-b-richblack-800 px-6 py-2">
+            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-5">
               Courses
             </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+            <Th className="text-left text-sm font-medium uppercase text-richblack-5">
               Duration
             </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+            <Th className="text-left text-sm font-medium uppercase text-richblack-5">
               Price
             </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+            <Th className="text-left text-sm font-medium uppercase text-richblack-5">
               Actions
             </Th>
           </Tr>
@@ -60,7 +60,7 @@ export default function CoursesTable({ courses, setCourses }) {
         <Tbody>
           {courses?.length === 0 ? (
             <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
+              <Td className="py-10 text-center text-2xl font-medium text-richblack-500">
                 No courses found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -75,10 +75,10 @@ export default function CoursesTable({ courses, setCourses }) {
                   <img
                     src={course?.thumbnail}
                     alt={course?.courseName}
-                    className="h-[148px] w-[220px] rounded-lg object-cover"
+                    className="h-[148px] w-[220px] bg-blue-200 rounded-lg  object-cover"
                   />
                   <div className="flex flex-col justify-between">
-                    <p className="text-lg font-semibold text-richblack-5">
+                    <p className="text-lg font-semibold text-richblack-600">
                       {course.courseName}
                     </p>
                     <p className="text-xs text-richblack-300">
@@ -90,7 +90,7 @@ export default function CoursesTable({ courses, setCourses }) {
                             .join(" ") + "..."
                         : course.courseDescription}
                     </p>
-                    <p className="text-[12px] text-white">
+                    <p className="text-[12px] text-black">
                       Created: {formatDate(course.createdAt)}
                     </p>
                     {course.status === COURSE_STATUS.DRAFT ? (
@@ -99,8 +99,8 @@ export default function CoursesTable({ courses, setCourses }) {
                         Drafted
                       </p>
                     ) : (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
-                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
+                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-blue-200 px-2 py-[2px] text-[12px] font-medium text-white">
+                        <div className="flex h-3 w-3 items-center justify-center rounded-full bg-white text-richblack-600">
                           <FaCheck size={8} />
                         </div>
                         Published
@@ -108,13 +108,13 @@ export default function CoursesTable({ courses, setCourses }) {
                     )}
                   </div>
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100">
+                <Td className="text-sm font-medium text-richblack-600">
                   2hr 30min
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100">
+                <Td className="text-sm font-medium text-richblack-600">
                   ₹{course.price}
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100 ">
+                <Td className="text-sm font-medium text-richblack-600 ">
                   <button
                     disabled={loading}
                     onClick={() => {

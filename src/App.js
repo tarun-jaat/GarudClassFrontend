@@ -37,6 +37,7 @@ import ViewCourse from "./Pages/ViewCourse";
 import CourseDetails from "./Pages/CourseDetails";
 import Batches from "./Pages/Main/Batches";
 import Events from "./Pages/Events";
+import EditCourse from "./Components/Dashboard/EditCourse";
 // import Navbar from "./Components/Common/Navbar";
 // import RaiseAnyQuery from "./Components/Common/RaiseAnyQuery";
 // import Aggrement from "./Components/QuizComponentMain.js/Aggrement";
@@ -140,6 +141,8 @@ function App() {
             <Route path="batches" element={<Batches/>}/>
             <Route path="inbox" element={<Inbox />} />
             <Route path="addcourse" element={<AddCourse />} />
+            <Route path="edit-course/:courseId" element={<EditCourse />} />
+
             <Route path="setting">
               <Route element={<Settings />}>
                 <Route index element={<SettingHome />} />
