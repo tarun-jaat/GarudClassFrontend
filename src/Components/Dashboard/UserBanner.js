@@ -19,12 +19,12 @@ function UserBanner() {
   // const navigate = useNavigate();
 
   return (
-    <div className="relative border-2 border-richblue-500 bg-richblue-700 font-inter text-richblue-5 w-[70%] rounded-2xl h-[200px] px-6 py-5">
-      <div className='z-100'>
-        <p className="text-4xl font-bold ">
-          Welcome Back <span className="text-4x text-caribbeangreen-50 font-bold">{user?.firstName} {user?.lastName}</span>{" "}
+    <div className="relative border-2 border-richblue-500 bg-richblue-700 font-inter text-richblue-5 w-full md:w-[70%] rounded-2xl h-[150px] md:h-[200px] p-2 md:px-6 md:py-5">
+      <div className=''>
+        <p className="md:text-4xl font-bold ">
+          Welcome Back <span className="text-4x text-caribbeangreen-50 capitalize font-bold">{user?.firstName} {user?.lastName}</span>{" "}
         </p>
-        <p className="mt-5 mb-5 text-richblue-5  text-sm font-edu-sa">
+        <p className="md:mt-5 md:mb-5 mt-2 text-richblue-5 text-xs md:text-sm font-edu-sa">
           "{quote.text}"  {"  "} (Author - :"{quote.author}")
         </p>
         

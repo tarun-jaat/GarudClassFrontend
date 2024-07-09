@@ -6,6 +6,7 @@ import cartReducer from "../Slices/cartSlice";
 import courseReducer from "../Slices/courseSlice";
 import viewCourseReducer from "../Slices/viewCourse";
 import QuizSlice from "../Slices/QuizSlice";
+import BatchSilce from "../Slices/BatchSilce";
 const rootReducer=combineReducers({
     profile:ProfileReducer,
     auth:authReducer,
@@ -13,7 +14,8 @@ const rootReducer=combineReducers({
     course: courseReducer,
     cart: cartReducer,
     viewCourse: viewCourseReducer,
-    quiz:QuizSlice
+    quiz:QuizSlice,
+    batch:BatchSilce
 })
 
 export default rootReducer;

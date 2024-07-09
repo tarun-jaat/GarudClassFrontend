@@ -38,6 +38,9 @@ import CourseDetails from "./Pages/CourseDetails";
 import Batches from "./Pages/Main/Batches";
 import Events from "./Pages/Events";
 import EditCourse from "./Components/Dashboard/EditCourse";
+import AddBatch from "./Components/Dashboard/AddBatch";
+import { MdOtherHouses } from "react-icons/md";
+import OtherInputs from "./Pages/AdminDashboard.js/OtherInputs";
 // import Navbar from "./Components/Common/Navbar";
 // import RaiseAnyQuery from "./Components/Common/RaiseAnyQuery";
 // import Aggrement from "./Components/QuizComponentMain.js/Aggrement";
@@ -133,6 +136,7 @@ function App() {
             <Route index element={<DashBoardHome />} />
             <Route path="user" element={<User />} />
             <Route path="course" element={<Course />} />
+            <Route path="Inputs" element={<OtherInputs/>}/>
             <Route path="quiz">
               <Route index element={<Quiz />} />
               <Route path=":id" element={<SingleQuizDetails />} />
@@ -141,6 +145,7 @@ function App() {
             <Route path="batches" element={<Batches/>}/>
             <Route path="inbox" element={<Inbox />} />
             <Route path="addcourse" element={<AddCourse />} />
+            <Route path="addBatch" element={<AddBatch />} />
             <Route path="edit-course/:courseId" element={<EditCourse />} />
 
             <Route path="setting">
@@ -154,6 +159,7 @@ function App() {
             <Route path="about-us" element={<Aboutus />} />
             <Route path="feeds" element={<Feeds />} />
             <Route path="contact-us" element={<ContactUs />} />
+            
             <Route
               path="termsandconditions"
               element={<TermsAndConditionsPage />}

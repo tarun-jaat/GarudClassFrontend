@@ -100,7 +100,7 @@ export const OtherData = [
       icon: <FaUserFriends/>,
     },
     {
-      title: "Enrolled Courses",
+      title: "Enrolled Batches",
       path: "/dashboard/course",
       type: ACCOUNT_TYPE.STUDENT,
       icon: <BiSolidPurchaseTag/>,
@@ -131,25 +131,25 @@ export const AboutGarudData=[
   {
     title: "About Us",
     path: "/dashboard/about-us",
-    type: ACCOUNT_TYPE.STUDENT,
+    // type: ACCOUNT_TYPE.STUDENT,
     icon:<HiOutlineInformationCircle/>
     },
     {
       title: "Feeds",
       path: "/dashboard/feeds",
-      type: ACCOUNT_TYPE.STUDENT,
+      // type: ACCOUNT_TYPE.STUDENT,
       icon: <ImFeed/>,
       },
       {
         title: "contact Us",
         path: "/dashboard/contact-us",
-        type: ACCOUNT_TYPE.STUDENT,
+        // type: ACCOUNT_TYPE.STUDENT,
         icon: <FaPhoneAlt/>,
         },
         {
           title: "terms and Conditions",
           path: "/dashboard/termsandconditions",
-          type: ACCOUNT_TYPE.STUDENT,
+          // type: ACCOUNT_TYPE.STUDENT,
           icon: <GoChecklist/>,
           }
 

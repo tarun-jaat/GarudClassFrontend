@@ -15,7 +15,7 @@ const divStyle = {
   backgroundPosition:"center",
   backgroundSize:"fill",
   backgroundRepeat:" no-repeat",
-  height: '400px',
+  height: '300px',
 }
 const slideImages = [
   {
@@ -34,8 +34,8 @@ const slideImages = [
 
 function Slideshow() {
     return (
-      <div className="slide-container shadow-md shadow-richblack-500">
-        <Slide>
+      <div className="slide-container shadow-md rounded-xl shadow-richblack-500">
+        <Slide className="rounded-xl">
          {slideImages.map((slideImage, index)=> (
             <div key={index}>
               <div style={{ ...divStyle, 'backgroundImage': `url(${slideImage.url})` }}>

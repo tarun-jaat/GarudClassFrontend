@@ -12,3 +12,11 @@ export const ACCOUNT_TYPE = {
     DRAFT: "Draft",
     PUBLISHED: "Published",
   }
+
+  export const BATCH_STATUS={
+    UPCOMING:"Upcoming",
+    ENDED:"Ended",
+  STARTED:"Started",
+
+
+  }

@@ -103,7 +103,6 @@ export default function CourseBuilderForm() {
 
   return (
     <div className="ml-4 space-y-8 rounded-md border-2 border-richblack-100  text-richblack-900 bg-white p-6">
-      <p className="text-2xl font-semibold text-richblack-700">Course Builder</p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="flex flex-col space-y-2">
           <label className="text-sm text-richblack-700" htmlFor="sectionName">

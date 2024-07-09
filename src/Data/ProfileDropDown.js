@@ -30,5 +30,10 @@ export const ProfileDropDown = [
     path: "/dashboard/Email",
     type: ACCOUNT_TYPE.ADMIN,
   },
+  {
+    title: "Other Inputs",
+    path: "/dashboard/Inputs",
+    type: ACCOUNT_TYPE.ADMIN,
+  },
 ];
 
