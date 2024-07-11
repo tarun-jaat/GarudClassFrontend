@@ -5,3 +5,4 @@ export const GET_ALL_USER_FEE_DATA_FAILURE = 'GET_ALL_USER_FEE_DATA_FAILURE';
 export const getAllUserFeeData = () => ({
   type: GET_ALL_USER_FEE_DATA,
 });
+ 

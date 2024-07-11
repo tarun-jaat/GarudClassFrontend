@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from "react-redux"
 
 import {
   updateSubSection,
+  createSubSection
 } from "../../../../Services/Operations/CourseApi"
-import { createSubSection } from "../../../../Services/Operations/BatchApi"
-import {setBatch} from "../../../../Slices/BatchSilce"
+// import { createSubSection } from "../../../../Services/Operations/BatchApi"
+import {setBatch} from "../../../../Slices/BatchSilce" 
 import IconBtn from "../../../Common/ButtonCommon"
 import Upload from "../../AddCourse/Upload"
 
@@ -105,21 +106,20 @@ export default function SubSectionModal({
     }
 
     const formData = new FormData()
-    formData.append("topicId", modalData)
+    formData.append("sectionId", modalData)
     formData.append("title", data.lectureTitle)
     formData.append("description", data.lectureDesc)
     formData.append("video", data.lectureVideo)
     setLoading(true)
     const result = await createSubSection(formData, token)
-    console.log(Batch)
-    if (result) {
-      // update the structure of Batch
-      const updatedlectureVideos = Batch.subjects.Chapter.map((topic) =>
-        topic._id === modalData ? result : topic
-      )
-      const updatedCourse = { ...Batch, topic: updatedlectureVideos }
-      dispatch(setBatch(updatedCourse))
-    }
+    // if (result) {
+    //   // update the structure of Batch
+    //   const updatedlectureVideos = Batch.subjects.Chapter.map((topic) =>
+    //     topic._id === modalData ? result : topic
+    //   )
+    //   const updatedCourse = { ...Batch, topic: updatedlectureVideos }
+    //   dispatch(setBatch(updatedCourse))
+    // }
     setModalData(null)
     setLoading(false)
   }

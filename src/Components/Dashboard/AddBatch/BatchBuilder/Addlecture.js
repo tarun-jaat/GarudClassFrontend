@@ -1,46 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import useOnClickOutside from "../../../../Hooks/OnClickOutside";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import IconBtn from "../../../Common/ButtonCommon";
+import { IoAddCircleOutline } from "react-icons/io5";
+import { useForm } from "react-hook-form";
+import {
+  updateSection,
+  // createSection,
+} from "../../../../Services/Operations/CourseApi";
+
 import {
   getAllSubjects,
   createBatchSubject,
   createBatchSubjectChapter,
-  createChapterTopic,
+  createSection,
+  getLectureContent,
 } from "../../../../Services/Operations/BatchApi";
 import SubSectionModal from "./Subsection";
+import { setBatch, setLectureContent } from "../../../../Slices/BatchSilce";
+import NestedView from "./NestedView";
+import { FaPlus } from "react-icons/fa";
 
 function Addlecture() {
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
+
   const [showForm, setShowForm] = useState(false);
   const [subjects, setSubjects] = useState([]);
-  const [subjectName, setSubjectName] = useState(""); // new state for subject name input
+  const [chapter, setChapter] = useState([]);
+  const [subjectName, setSubjectName] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
   const [otherSubject, setOtherSubject] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState("");
   const [otherSubjectValue, setOtherSubjectValue] = useState("");
   const [selectedSubjectId, setSelectedSubjectId] = useState("");
-  const [chapterName, setChapterName] = useState(""); // new state for chapter name input
-  const [chapter, setChapter] = useState([]);
-  const [chapterDescription, setChapterDescription] = useState(""); // new state for chapter description input
-  const [otherChapter, setOtherChapter] = useState(false); // new state for other subject input value
+  const [chapterName, setChapterName] = useState("");
+  const [chapterDescription, setChapterDescription] = useState("");
+  const [otherChapter, setOtherChapter] = useState(false);
   const [selectedChapterId, setSelectedChapterId] = useState("");
-  const [topic, setTopic] = useState([]);
-  const [topicName, setTopicName] = useState(""); // new state for topic name input
-  const [topicDescription, setTopicDescription] = useState(""); // new state for topic description input
-  const [otherTopic, setOtherTopic] = useState(false); // new state for other topic input value
-  const [selectedTopic, setSelectedTopic] = useState("");
-  const [selectedTopicData, setSelectedTopicData] = useState({});
-  const [addSubSection, setAddSubsection] = useState(null)
-
-  const { Batch } = useSelector((state) => state.batch);
+  const [loading, setLoading] = useState(false);
+  const [editSectionName, setEditSectionName] = useState("");
+  const [sectionId, setSectionId] = useState({});
+  const [selectedSection, setSelectedSection] = useState("");
+  const [otherSection, setOtherSection] = useState(false);
+  const [addSubSection, setAddSubsection] = useState(null);
+  const [subsection, setSubsection] = useState(null);
+  const { Batch, lectureContent } = useSelector((state) => state.batch);
   const { token } = useSelector((state) => state.auth);
-
   const batchId = Batch._id;
-
-  const handleAddLectureClick = () => {
-    setShowForm(true);
-  };
-
-  const formRef = React.createRef();
+  const dispatch = useDispatch();
+  const formRef = useRef(null);
   useOnClickOutside(formRef, () => {
     setShowForm(false);
   });
@@ -55,7 +68,11 @@ function Addlecture() {
       });
   }, [batchId, token]);
 
-  const handleSubmit = (e) => {
+  const handleAddLectureClick = () => {
+    setShowForm(true);
+  };
+
+  const handleSubjectSubmit = (e) => {
     e.preventDefault();
     const data = {
       batchId,
@@ -66,12 +83,16 @@ function Addlecture() {
         console.log(response);
         getAllSubjects(token, batchId).then((response) => {
           setSubjects(response);
+          dispatch(setBatch(response));
+          console.log("response", response);
+          dispatch(setBatch({ ...Batch, subjects: [response] }));
+
+          console.log("SubjectBathc", Batch);
           setSubjectName("");
+
           setOtherSubject(false);
         });
-        setSubjectName("").catch((error) => {
-          console.error(error);
-        });
+        console.log("subject", response);
       })
       .catch((error) => {
         console.error(error);
@@ -89,11 +110,10 @@ function Addlecture() {
     } else {
       setOtherSubject(false);
       setSelectedSubject(value);
-      setSelectedTopic("")
-      setSelectedChapter("")
-      // console.log("MainChange", selectedSubject.Chapter);
-      setChapter(selectedSubject.Chapter); // Update the chapter state
-      setSelectedSubjectId(selectedSubject._id); // Set the selected subject ID
+
+      setSelectedChapter("");
+      setChapter(selectedSubject?.Chapter || []);
+      setSelectedSubjectId(selectedSubject?._id || "");
     }
   };
 
@@ -106,11 +126,18 @@ function Addlecture() {
       const selectedChapter = chapter.find(
         (chapter) => chapter.chapterName === value
       );
-      setSelectedChapter(selectedChapter);
-      setSelectedChapterId(selectedChapter._id);
-      setTopic(selectedChapter.topics);
+
+      setSelectedChapter(selectedChapter?.chapterName);
+      setSelectedChapterId(selectedChapter?._id);
+      setOtherChapter(false);
+
+      // const chapterId= selectedChapterId
+      // getLectureContent(chapterId, token).then((result) => {
+      //   dispatch(setLectureContent(result));
+      // });
     }
   };
+
   const handleChapterSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -121,64 +148,101 @@ function Addlecture() {
     createBatchSubjectChapter(token, data)
       .then((response) => {
         console.log(response);
-        setTopic(response);
-        setChapterName(""); // Clear the chapter name input field
-        setChapterDescription(""); // Clear the chapter description input field
+        setChapterDescription("");
         setOtherChapter(false);
-        getAllSubjects(token, batchId)
-          .then((response) => {
-            setSubjects(response);
-            setSubjectName("");
-            setOtherSubject(false);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+        setChapterName("");
+        getAllSubjects(token, batchId).then((response) => {
+          setSubjects(response);
+          dispatch(
+            setBatch({
+              ...Batch,
+              subjects: [...Batch.subjects, { Chapter: [response] }],
+            })
+          );
+          console.log("chapterBatch", Batch);
+          setSubjectName("");
+          setSelectedSubject("");
+          setOtherSubject(false);
+        });
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
-  const handleTopicSelectChange = (e) => {
+  const onSubmit = async (data) => {
+    setLoading(true);
+
+    let result;
+
+    if (editSectionName) {
+      result = await updateSection(
+        {
+          sectionName: data.sectionName,
+          sectionId: editSectionName,
+          chapterId: selectedChapterId,
+        },
+        token
+      );
+    } else {
+      result = await createSection(
+        {
+          sectionName: data.sectionName,
+          chapterId: selectedChapterId,
+        },
+        token
+      );
+    }
+    if (result) {
+      dispatch(
+        setBatch({
+          ...Batch,
+          subjects: [...Batch.subjects, { Chapter: [result] }],
+        })
+      );
+      setEditSectionName("");
+      setValue("sectionName", "");
+
+      getAllSubjects(token, batchId).then((response) => {
+        setSubjects(response);
+      });
+    }
+
+    console.log(sectionId);
+
+    setLoading(false);
+  };
+
+  const cancelEdit = () => {
+    setEditSectionName(null);
+    setValue("sectionName", "");
+  };
+
+  const handleChangeEditSectionName = (sectionId, sectionName) => {
+    if (editSectionName === sectionId) {
+      cancelEdit();
+      return;
+    }
+    setEditSectionName(sectionId);
+    setValue("sectionName", sectionName);
+  };
+
+  const handleSectionSelectChange = (e) => {
     const value = e.target.value;
     if (value === "other") {
-      setOtherTopic(true);
+      setOtherSection(true);
     } else {
-      setOtherTopic(false);
-      const selectedTopic = topic.find((topic) => topic._id === value);
-      setSelectedTopic(value);
-      setSelectedTopicData(selectedTopic);
-      console.log("data", selectedTopicData);
-    }
-  };
+      setSelectedSection(value);
+      setOtherSection(false);
+      const selectedSection = subjects
+        .find((subject) => subject.subjectName === selectedSubject)
+        .Chapter.find((chapter) => chapter._id === selectedChapterId)
+        .lectureContent.find((section) => section.sectionName === value);
+      setSectionId(selectedSection._id);
+      setSubsection(selectedSection.subSection); // set the subsection state variable
 
-  const handleTopicSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      chapterId: selectedChapterId,
-      topicName,
-      topicDescription,
-    };
-    createChapterTopic(token, data)
-      .then((response) => {
-        console.log(response);
-        setTopicName(""); // Clear the chapter name input field
-        setTopicDescription(""); // Clear the chapter description input field
-        setOtherTopic(false);
-        getAllSubjects(token, batchId)
-          .then((response) => {
-            setSubjects(response);
-            setSubjectName("");
-            setOtherSubject(false);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      console.log("sectionId", sectionId);
+    }
   };
 
   return (
@@ -187,7 +251,7 @@ function Addlecture() {
         <h1 className="text-3xl font-semibold">Lectures</h1>
         <button
           type="button"
-          class="btn btn-secondary"
+          className="btn btn-secondary"
           data-mdb-ripple-init
           onClick={handleAddLectureClick}
         >
@@ -199,22 +263,22 @@ function Addlecture() {
           className="w-full py-3 border rounded-2xl bg-[#eeeeee] backdrop-blur-3xl flex flex-col items-center justify-center"
           ref={formRef}
         >
-          <form onSubmit={handleSubmit}>
-            <div className="flex  items-center gap-4 py-3">
+          <form onSubmit={handleSubjectSubmit}>
+            <div className="flex items-center gap-4 py-3">
               <label>Subject</label>
               <select
                 className="py-2 px-3 rounded-lg"
                 value={selectedSubject}
                 onChange={handleSelectChange}
               >
+                <option value="" disabled>
+                  Choose a Subject
+                </option>
                 {subjects.map((subject) => (
                   <option key={subject._id} value={subject.subjectName}>
                     {subject.subjectName}
                   </option>
                 ))}
-                <option value="" disabled>
-                  Choose a Subject
-                </option>
                 <option value="other">Other</option>
               </select>
               {otherSubject && (
@@ -223,6 +287,7 @@ function Addlecture() {
                     type="text"
                     value={otherSubjectValue}
                     onChange={(e) => setOtherSubjectValue(e.target.value)}
+                    placeholder="Enter Subject Name"
                   />
                   <button type="submit">Create Subject</button>
                 </>
@@ -230,22 +295,21 @@ function Addlecture() {
             </div>
           </form>
           {selectedSubject && (
-            <div className="flex  items-center gap-4 pb-3">
+            <div className="flex items-center gap-4 pb-3">
               <label>Chapter</label>
-
               <select
                 className="py-2 px-3 rounded-lg"
                 value={selectedChapter}
-                onChange={(e) => handleChapterSelectChange(e)}
+                onChange={handleChapterSelectChange}
               >
+                <option value="" disabled>
+                  Choose a Chapter
+                </option>
                 {chapter.map((chapter) => (
                   <option key={chapter._id} value={chapter.chapterName}>
                     {chapter.chapterName}
                   </option>
                 ))}
-                <option value="" disabled>
-                  Choose a Chapter
-                </option>
                 <option value="other">Other</option>
               </select>
               {otherChapter && (
@@ -269,103 +333,126 @@ function Addlecture() {
               )}
             </div>
           )}
-          {selectedChapter && (
-            <div className="flex flex-col items-start gap-4 pb-3">
-              <label>Topic</label>
 
-              <select
-                value={selectedTopic}
-                className="py-2 px-3 rounded-lg"
-                onChange={(e) => handleTopicSelectChange(e)}
-              >
-                {topic &&
-                  topic?.map((topic) => (
-                    <option key={topic._id} value={topic._id}>
-                      {topic.topicName}
-                    </option>
-                  ))}
-                <option value="" disabled>
-                  Choose a Topic
-                </option>
-                <option value="other">Other</option>
-              </select>
-              {selectedTopic && (
-                <>
-                <button
-                class="btn btn-primary"
-                data-mdb-ripple-init
-                onClick={()=>setAddSubsection(selectedTopicData._id)}>
-                  Add Lecture Video
-                </button>
-                </>
-              )}
-              {otherTopic && (
-                <>
+          {otherSection && (
+            <div className="w-full flex justify-center px-4 ">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <div className="flex flex-col space-y-2">
+                  <label
+                    className="text-sm text-richblack-700"
+                    htmlFor="sectionName"
+                  >
+                    Section Name <sup className="text-pink-200">*</sup>
+                  </label>
                   <input
-                    type="text"
-                    value={topicName}
-                    onChange={(e) => setTopicName(e.target.value)}
-                    placeholder="Topic Name"
+                    id="sectionName"
+                    disabled={loading}
+                    placeholder="Add a section to build your course"
+                    {...register("sectionName", { required: true })}
+                    className="form-style w-full"
                   />
-                  <input
-                    type="text"
-                    value={topicDescription}
-                    onChange={(e) => setTopicDescription(e.target.value)}
-                    placeholder="Topic Description"
-                  />
-                  <button type="submit" onClick={handleTopicSubmit}>
-                    Create Topic
-                  </button>
-                </>
-              )}
-              {/* {selectedTopic && (
-                <>
-                  {Object.keys(selectedTopicData).map((key) => (
-                    <div key={key} className="border w-full">
-                      <label>name :{key.topicName}</label>
-                      <p> description:{key.topicDescription}</p>
-
-
-                    </div>
-                  ))}
-                </>
-              )} */}
-              {selectedTopic && (
-                <div>
-                  <p>ID :{selectedTopicData._id}</p>
-                  <label>name :{selectedTopicData.topicName}</label>
-                  <p> description:{selectedTopicData.topicDescription}</p>
-
-                </div>
-              )}
-              {selectedTopic && (
-                <div>
-                  {selectedTopicData.lecturesVideos.length === 0 ? (
-                    <p>No lecture videos added yet.</p>
-                  ) : (
-                    // render the lecture videos list
-                    <ul>
-                      {selectedTopicData.lecturesVideos.map((video) => (
-                        <li key={video._id}>{video.title}</li>
-                      ))}
-                    </ul>
+                  {errors.sectionName && (
+                    <span className="ml-2 text-xs tracking-wide text-pink-200">
+                      Section name is required
+                    </span>
                   )}
                 </div>
+                <div className="flex items-end gap-x-4">
+                  <IconBtn
+                    type="submit"
+                    disabled={loading}
+                    text={
+                      editSectionName ? "Edit Section Name" : "Create Section"
+                    }
+                    outline={true}
+                  >
+                    <IoAddCircleOutline size={20} className="text-[#4880FF]" />
+                  </IconBtn>
+                  {editSectionName && (
+                    <button
+                      type="button"
+                      onClick={cancelEdit}
+                      className="text-sm text-richblack-300 underline"
+                    >
+                      Cancel Edit
+                    </button>
+                  )}
+                </div>
+              </form>
+            </div>
+          )}
+          {selectedChapter && (
+            <div className="flex items-center gap-4 pb-3">
+              <label>Topic</label>
+              <select
+                className="py-2 px-3 text-black  h-fit rounded-lg"
+                value={selectedSection}
+                onChange={handleSectionSelectChange}
+              >
+                <option value="" disabled>
+                  Choose a Section
+                </option>
+                {subjects
+                  .find((subject) => subject.subjectName === selectedSubject)
+                  .Chapter.find((chapter) => chapter._id === selectedChapterId)
+                  .lectureContent.map((section) => (
+                    <option
+                      className="text-black"
+                      key={section._id}
+                      value={section.sectionName}
+                    >
+                      {section.sectionName}
+                    </option>
+                  ))}
+                <option value="other">Other</option>
+              </select>
+              {selectedSection && (
+                <button
+                  onClick={() => setAddSubsection(sectionId)}
+                  className="mt-3 flex items-center gap-x-1 bg-white rounded-lg p-2"
+                >
+                  <FaPlus className="text-lg" />
+                  <p>Add Lecture</p>
+                </button>
               )}
             </div>
           )}
-          
+         {selectedChapter && selectedSection && (
+  <div className="px-4 py-2 bg-white flex-col flex items-start w-full min-h-56 border rounded-lg  gap-4 pb-3">
+    <p className="text-xl text-richblack-400">Video Lectures</p>
+    {subsection && subsection.length > 0 ? (
+      subsection.map((video) => (
+        <div key={video._id} className="relative flex items-center justify-center gap-4">
+          <video className="relative w-56 object-cover bg-blue-100 h-56 rounded-lg">
+            <source src={video.videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="absolute bottom-2 ">
+            <p className="font-bold text-center text-2xl  text-white">
+              {video.title} 
+            </p>
+            <p className="text-sm text-center text-white">
+              {video.description}
+            </p>
+          </div>
+        </div>
+      ))
+    ) : (
+      <p className="text-lg text-center text-richblack-400">No data found</p>
+    )}
+  </div>
+)}
         </div>
       )}
       {addSubSection ? (
-            <SubSectionModal
-            modalData={addSubSection}
-            setModalData={setAddSubsection}
-            add={true}
-            />
-          ):(
-            <></>
-          )}
+        <SubSectionModal
+          modalData={addSubSection}
+          setModalData={setAddSubsection}
+          add={true}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

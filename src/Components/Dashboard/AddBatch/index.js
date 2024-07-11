@@ -8,7 +8,7 @@ export default function AddBatch() {
 
   return (
     <>
-      <div className="flex mt-16  w-full items-start gap-x-6">
+      <div className="flex mt-16 px-4  w-full items-start gap-x-6">
         <div className="flex mt-20 flex-1 flex-col">
           <h1 className=" text-3xl font-medium text-[#4880FF] uppercase tracking-wider lg:text-left text-center">
             Add Batch

@@ -10,7 +10,10 @@ const {
     CREATE_SUBJECT_CHAPTER,
     CREATE_CHAPTER_TOPIC,
     ADD_LECTURE_INTO_TOPIC,
-    GET_ALL_INSTRUCTOR_BATCH_API
+    ADD_SECTION_INTO_SUBJECT_API,
+    GET_ALL_INSTRUCTOR_BATCH_API,
+    GET_LECTURE_CONTENT_API,
+    UPDATE_BATCH_DETAILS
 }=batchEndpoints
 
 
@@ -174,3 +177,75 @@ export const addBatchDetails = async (data, token) => {
     toast.dismiss(toastId)
     return result
   }
+
+
+
+
+
+// create a section
+export const createSection = async (data, token) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("POST", ADD_SECTION_INTO_SUBJECT_API, data, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("CREATE SECTION API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Create Section")
+    }
+    toast.success("Course Section Created")
+    result = response?.data?.populatedSection 
+  } catch (error) {
+    console.log("CREATE SECTION API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+
+export const getLectureContent = async (chapterId, token) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("POST", GET_LECTURE_CONTENT_API, chapterId, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("Get Lecture content API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not get Section")
+    }
+    toast.success("Section Data Retrived Successfully")
+    result = response?.data?.lectureContent
+  } catch (error) {
+    console.log("CREATE SECTION API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}
+
+
+// edit the Batch details
+export const editBatchDetails = async (data, token) => {
+  let result = null
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("POST",UPDATE_BATCH_DETAILS, data, {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("EDIT Batch API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Update batch Details")
+    }
+    toast.success("Batch Details Updated Successfully")
+    result = response?.data?.data
+  } catch (error) {
+    console.log("EDIT Batch API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return result
+}

@@ -99,12 +99,16 @@ export const quizEndpoints={
 
 export const batchEndpoints={
   CREATE_BATCH_API:BASE_URL+"/batch/createBatch",
+  UPDATE_BATCH_DETAILS:BASE_URL+"/batch/updateBatchDetails",
   CREATE_BATCH_SUBJECT:BASE_URL+"/batch/createSubject",
   CREATE_SUBJECT_CHAPTER:BASE_URL+"/batch/subject/addChapter",
   CREATE_CHAPTER_TOPIC:BASE_URL+"/batch/subject/addTopic",
   GET_ALL_SUBJECTS:BASE_URL+"/batch/subject/getSubject",
   ADD_LECTURE_INTO_TOPIC:BASE_URL+"/batch/subject/addLecture",
   GET_ALL_INSTRUCTOR_BATCH_API: BASE_URL + "/batch/getInstructorBatches",
+  GET_LECTURE_CONTENT_API:BASE_URL+"/batch/subject/getlectureContent",
+
+  ADD_SECTION_INTO_SUBJECT_API:BASE_URL+'/batch/addSectionIntoSubject'
 
   // GET_ALL_BATCH_API:BASE_URL+"/batch/getAllBatches",
   // GET_BATCH_DETAILS_API:BASE_URL+"/batch/find",

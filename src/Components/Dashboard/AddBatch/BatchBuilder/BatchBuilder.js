@@ -1,15 +1,28 @@
 import React, { useState } from 'react'
 import Addlecture from './Addlecture';
+import { setStep } from '../../../../Slices/BatchSilce';
+import { useDispatch } from 'react-redux';
 function BatchBuilder() {
   const [activeTab, setActiveTab] = useState('ex1-tabs-1');
+  const [loading, setLoading] = useState(false)
+  const dispatch = useDispatch()
+
 
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
   
+  const goToNext = () => {
+    dispatch(setStep(3))
+
+  }
+  const goBack = () => {
+    dispatch(setStep(1))
+  }
   return (
-    <div
-    className="space-y-4 mx-4 rounded-md border-2 border-[#bababa] bg-white p-6"
+    <div className="h-screen">
+<div
+    className="space-y-4 mx-4 rounded-md border-2 min-h-max border-[#bababa] bg-white p-6"
 >
       {/* Tabs Navigation */}
       <ul className="nav nav-tabs mb-3" id="ex1" role="tablist">
@@ -101,6 +114,24 @@ function BatchBuilder() {
         >
           Tab 4 content
         </div>
+      </div>
+    </div>
+    
+      <div className="flex justify-end py-6 gap-x-3">
+        <button
+          onClick={goBack}
+          className={`flex border-2 border-[#4880FF] hover:sc cursor-pointer items-center gap-x-2 rounded-md bg-white py-[8px] px-[20px] font-semibold text-[#4880FF]`}
+        >
+          Back
+        </button>
+        <button
+            onClick={goToNext}
+            disabled={loading}
+            className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-[#4880ff] py-[8px] px-[20px] hover:scale-95 font-semibold text-richblack-5`}
+          >
+            Continue
+          </button>
+      
       </div>
     </div>
   )

@@ -4,6 +4,7 @@ const initialState = {
   Batch: null,
   editBatch: false,
   paymentLoading: false,
+  LectureContent:null
 };
 
 const batchSlice = createSlice({
@@ -15,6 +16,9 @@ const batchSlice = createSlice({
     },
     setBatch: (state, action) => {
       state.Batch = action.payload;
+    },
+    setLectureContent:(state,action)=>{
+      state.LectureContent=action.payload
     },
     setEditBatch: (state, action) => {
       state.editBatch = action.payload;
@@ -35,6 +39,7 @@ export const{
     setBatch,
     setEditBatch,
     setPaymentLoading,
+    setLectureContent,
     resetbatchState
     } = batchSlice.actions;
 

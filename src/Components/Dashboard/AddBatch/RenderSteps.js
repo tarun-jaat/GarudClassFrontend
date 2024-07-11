@@ -58,7 +58,7 @@ const RenderSteps = () => {
           </div>
     
           <div className='mb-4 ml-4'>
-            <div className='hidden md:flex justify-between select-none ' >
+            <div className='hidden md:flex justify-around select-none ' >
               {
                 steps.map(item => (
                   <div key={item.id} className={`min-w-[130px] text-center text-sm  uppercase tracking-wider
