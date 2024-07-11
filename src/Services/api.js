@@ -108,8 +108,8 @@ export const batchEndpoints={
   GET_ALL_INSTRUCTOR_BATCH_API: BASE_URL + "/batch/getInstructorBatches",
   GET_LECTURE_CONTENT_API:BASE_URL+"/batch/subject/getlectureContent",
 
-  ADD_SECTION_INTO_SUBJECT_API:BASE_URL+'/batch/addSectionIntoSubject'
+  ADD_SECTION_INTO_SUBJECT_API:BASE_URL+'/batch/addSectionIntoSubject',
 
-  // GET_ALL_BATCH_API:BASE_URL+"/batch/getAllBatches",
+  GET_ALL_BATCH_API:BASE_URL+"/batch/getAllBatches",
   // GET_BATCH_DETAILS_API:BASE_URL+"/batch/find",
 }
