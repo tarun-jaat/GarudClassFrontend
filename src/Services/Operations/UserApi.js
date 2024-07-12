@@ -16,7 +16,7 @@ export const getAllUsersData = async () => {
         throw new Error('Could Not Fetch the User Data');
       }
       // console.log(response) 
-      return response.data;
+      return response.data; 
     } catch (error) {
       console.log('GET_STUDENT_FEE_DATA API ERROR............', error);
       toast.error(error.message);

@@ -36,6 +36,9 @@ const quizSlice = createSlice({
         state.score++;
       }
     },
+    setScore:(state,action)=>{
+      state.score=action.payload
+      },
     finishQuiz: (state) => {
       state.isFinished = true;
     },
@@ -44,6 +47,7 @@ const quizSlice = createSlice({
       state.quiz = null
       state.editQuiz = false
       state.conductQuiz=null
+      state.score=null
 
     },
   },
@@ -60,6 +64,7 @@ export const {
   resetQuizState,
   setConductQuiz,
   conductQuiz,
+  setScore,
   
 } = quizSlice.actions;
 

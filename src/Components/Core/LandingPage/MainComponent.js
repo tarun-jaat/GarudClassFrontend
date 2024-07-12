@@ -21,7 +21,7 @@ const Skills = [
 
 function MainComponent() {
   return (
-    <div className="h-[700px] flex md:flex-row flex-col-reverse items-center bg-[#f4fbfe] w-full">
+    <div className="h-[700px] md:px-10 flex md:flex-row flex-col-reverse items-center bg-[#f4fbfe] w-full">
       <div className="md:w-[46%] w-full md:p-16 flex flex-col px-4 gap-8 items-start">
         <h1 className="font-extrabold md:text-4xl text-2xl   text-[#1B2124]  xl:text-[50px] md:text-[32px] md:leading-[58px] xl:leading-[60px] mb-[6px]">
           Up Your <span className="text-blue-200">Skills</span> To{" "}

@@ -20,7 +20,7 @@ function Batches() {
             href="/dashboard/addBatch"
           >
             Add Batch
-          </Button>
+          </Button> 
         ) : null}
       </div>
       <div className="my-4">

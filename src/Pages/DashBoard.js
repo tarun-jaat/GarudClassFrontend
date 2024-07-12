@@ -10,8 +10,8 @@ function DashBoard() {
       <SideBar />
       <Navbar/>
 
-       <div className="h-100vh- flex-1 overflow-auto">
-        <div className=" w-full pl-64 ">
+       <div className="h-100vh flex-1 overflow-auto">
+        <div className=" w-full md:pl-72 ">
           <Outlet />
         </div>
       </div>

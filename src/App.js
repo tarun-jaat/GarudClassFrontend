@@ -41,6 +41,8 @@ import EditCourse from "./Components/Dashboard/EditCourse";
 import AddBatch from "./Components/Dashboard/AddBatch";
 import { MdOtherHouses } from "react-icons/md";
 import OtherInputs from "./Pages/AdminDashboard.js/OtherInputs";
+import BatchDetailsPage from "./Components/Dashboard/BatchDetailsPage";
+import ChapterDetails from "./Components/Dashboard/ChapterDetails";
 // import Navbar from "./Components/Common/Navbar";
 // import RaiseAnyQuery from "./Components/Common/RaiseAnyQuery";
 // import Aggrement from "./Components/QuizComponentMain.js/Aggrement";
@@ -143,11 +145,14 @@ function App() {
               <Route path="create-quiz" element={<CreateQuiz />} />
             </Route>
             <Route path="batches" element={<Batches/>}/>
+            <Route path="batch-details/:batchName/:id" element={<BatchDetailsPage/>}/>
+            {/* <Route path="batch-details/:batchName/:subjectName/:subjectId" element={<ChapterDetails/>}/> */}
+            <Route path="chapter-details/:chapterId" element={<ChapterDetails/>}/>
+
             <Route path="inbox" element={<Inbox />} />
             <Route path="addcourse" element={<AddCourse />} />
             <Route path="addBatch" element={<AddBatch />} />
             <Route path="edit-course/:courseId" element={<EditCourse />} />
-
             <Route path="setting">
               <Route element={<Settings />}>
                 <Route index element={<SettingHome />} />

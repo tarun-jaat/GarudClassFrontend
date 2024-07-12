@@ -6,7 +6,7 @@ import { getUserEnrolledQuiz } from "../../../Services/Operations/ProfileAPI";
 
 export default function EnrolledQuiz() {
   const { token } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   
 
   const [enrolledQuiz, setEnrolledQuiz] = useState(null);

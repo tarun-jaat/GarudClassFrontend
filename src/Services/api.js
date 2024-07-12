@@ -111,5 +111,5 @@ export const batchEndpoints={
   ADD_SECTION_INTO_SUBJECT_API:BASE_URL+'/batch/addSectionIntoSubject',
 
   GET_ALL_BATCH_API:BASE_URL+"/batch/getAllBatches",
-  // GET_BATCH_DETAILS_API:BASE_URL+"/batch/find",
+  GET_FULL_BATCH_DETAILS_API:BASE_URL+"/batch/getfullDetails",
 }

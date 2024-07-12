@@ -190,8 +190,9 @@ function BatchInfoForm() {
             <div className="relative">
               <input
                 id="batchFees"
+                type="number"
                 placeholder="Enter Batch fees Price"
-                {...register("batchFess", {
+                {...register("batchFees", {
                   required: true,
                   valueAsNumber: true,
                   pattern: {
@@ -218,7 +219,7 @@ function BatchInfoForm() {
             <div className="relative">
               <input
                 id="batchMaxStudents"
-                type="text"
+                type="number"
                 placeholder="No of Seats"
                 {...register("batchMaxStudents", {
                   required: true,

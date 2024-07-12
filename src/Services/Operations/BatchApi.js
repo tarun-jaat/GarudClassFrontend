@@ -15,6 +15,7 @@ const {
   GET_LECTURE_CONTENT_API,
   UPDATE_BATCH_DETAILS,
   GET_ALL_BATCH_API,
+  GET_FULL_BATCH_DETAILS_API,
 } = batchEndpoints;
 
 export const addBatchDetails = async (data, token) => {
@@ -267,6 +268,31 @@ export const getAllBatches = async () => {
     result = response?.data?.batches;
   } catch (error) {
     console.log("GET_ALL_Batch_API API ERROR............", error);
+    toast.error(error.message);
+  }
+  toast.dismiss(toastId);
+  return result;
+};
+
+export const getFullBatchDetails = async (batchId, token) => {
+  let result = null;
+  const toastId = toast.loading("Loading...");
+  try {
+    const response = await apiConnector(
+      "GET",
+      `${GET_FULL_BATCH_DETAILS_API}/${batchId}`,batchId,
+      {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
+      }
+    );
+    console.log("GET_BATCH_DETAILS_API API RESPONSE............", response);
+    if (!response?.data?.success) {
+      throw new Error("Could Not Fetch Batch Details");
+    }
+    result = response?.data?.data;
+  } catch (error) {
+    console.log("GET_BATCH_DETAILS_API API ERROR............", error);
     toast.error(error.message);
   }
   toast.dismiss(toastId);

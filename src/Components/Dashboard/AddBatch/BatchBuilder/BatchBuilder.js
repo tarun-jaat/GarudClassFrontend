@@ -20,7 +20,7 @@ function BatchBuilder() {
     dispatch(setStep(1))
   }
   return (
-    <div className="h-screen">
+    <div className="h-11/12">
 <div
     className="space-y-4 mx-4 rounded-md border-2 min-h-max border-[#bababa] bg-white p-6"
 >
@@ -30,9 +30,8 @@ function BatchBuilder() {
           <a
             className={`nav-link ${activeTab === 'ex1-tabs-1' ? 'active' : ''}`}
             id="ex1-tab-1"
-            href="#ex1-tabs-1"
             role="tab"
-            aria-controls="ex1-tabs-1"
+            // aria-controls="ex1-tabs-1"
             aria-selected={activeTab === 'ex1-tabs-1'}
             onClick={() => handleTabClick('ex1-tabs-1')}
           >
@@ -43,9 +42,8 @@ function BatchBuilder() {
           <a
             className={`nav-link ${activeTab === 'ex1-tabs-2' ? 'active' : ''}`}
             id="ex1-tab-2"
-            href="#ex1-tabs-2"
             role="tab"
-            aria-controls="ex1-tabs-2"
+            // aria-controls="ex1-tabs-2"
             aria-selected={activeTab === 'ex1-tabs-2'}
             onClick={() => handleTabClick('ex1-tabs-2')}
           >
@@ -56,9 +54,8 @@ function BatchBuilder() {
           <a
             className={`nav-link ${activeTab === 'ex1-tabs-3' ? 'active' : ''}`}
             id="ex1-tab-3"
-            href="#ex1-tabs-3"
             role="tab"
-            aria-controls="ex1-tabs-3"
+            // aria-controls="ex1-tabs-3"
             aria-selected={activeTab === 'ex1-tabs-3'}
             onClick={() => handleTabClick('ex1-tabs-3')}
           >
@@ -69,9 +66,8 @@ function BatchBuilder() {
           <a
             className={`nav-link ${activeTab === 'ex1-tabs-4' ? 'active' : ''}`}
             id="ex1-tab-4"
-            href="#ex1-tabs-4"
             role="tab"
-            aria-controls="ex1-tabs-4"
+            // aria-controls="ex1-tabs-4"
             aria-selected={activeTab === 'ex1-tabs-4'}
             onClick={() => handleTabClick('ex1-tabs-4')}
           >
@@ -86,7 +82,7 @@ function BatchBuilder() {
           className={`tab-pane fade ${activeTab === 'ex1-tabs-1' ? 'show active' : ''}`}
           id="ex1-tabs-1"
           role="tabpanel"
-          aria-labelledby="ex1-tab-1"
+          // aria-labelledby="ex1-tab-1"
         >
           <Addlecture/>
         </div>
@@ -94,7 +90,7 @@ function BatchBuilder() {
           className={`tab-pane fade ${activeTab === 'ex1-tabs-2' ? 'show active' : ''}`}
           id="ex1-tabs-2"
           role="tabpanel"
-          aria-labelledby="ex1-tab-2"
+          // aria-labelledby="ex1-tab-2"
         >
           Tab 2 content
         </div>

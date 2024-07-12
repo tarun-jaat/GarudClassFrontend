@@ -21,7 +21,7 @@ function Navbar() {
     setOpen(false); 
   };
   return (
-    <div className="sticky top-0 w-full flex justify-around items-center  bg-white border-b-[1px] z-40  shadow-xl shadow-richblack-50">
+    <div className="sticky top-0 w-full flex justify-around items-center  bg-white border-b-[1px] z-40  shadow-md shadow-richblack-50">
       <Link to={"/"} className="md:float-left float-right">
         <img
           src={Logo}

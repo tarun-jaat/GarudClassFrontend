@@ -288,6 +288,7 @@ function Addlecture() {
                     value={otherSubjectValue}
                     onChange={(e) => setOtherSubjectValue(e.target.value)}
                     placeholder="Enter Subject Name"
+                    className="py-2 px-3 rounded-lg"
                   />
                   <button type="submit">Create Subject</button>
                 </>
@@ -319,12 +320,16 @@ function Addlecture() {
                     value={chapterName}
                     onChange={(e) => setChapterName(e.target.value)}
                     placeholder="Chapter Name"
+                    className="py-2 px-3 rounded-lg"
+
                   />
                   <input
                     type="text"
                     value={chapterDescription}
                     onChange={(e) => setChapterDescription(e.target.value)}
                     placeholder="Chapter Description"
+                    className="py-2 px-3 rounded-lg"
+
                   />
                   <button type="submit" onClick={handleChapterSubmit}>
                     Create Chapter
@@ -334,6 +339,43 @@ function Addlecture() {
             </div>
           )}
 
+          
+          {selectedChapter && (
+            <div className="flex items-center gap-4 pb-3">
+              <label>Topic</label>
+              <select
+                className="py-2 px-3 text-black  h-fit rounded-lg"
+                value={selectedSection}
+                onChange={handleSectionSelectChange}
+              >
+                <option value="" disabled>
+                  Choose a Section
+                </option>
+                {subjects
+                  .find((subject) => subject.subjectName === selectedSubject)
+                  .Chapter.find((chapter) => chapter._id === selectedChapterId)
+                  .lectureContent.map((section) => (
+                    <option
+                      className="text-black"
+                      key={section._id}
+                      value={section.sectionName}
+                    >
+                      {section.sectionName}
+                    </option>
+                  ))}
+                <option value="other">Other</option>
+              </select>
+              {selectedSection && (
+                <button
+                  onClick={() => setAddSubsection(sectionId)}
+                  className="mt-3 flex items-center gap-x-1 bg-white rounded-lg p-2"
+                >
+                  <FaPlus className="text-lg" />
+                  <p>Add Lecture</p>
+                </button>
+              )}
+            </div>
+          )}
           {otherSection && (
             <div className="w-full flex justify-center px-4 ">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -381,45 +423,11 @@ function Addlecture() {
               </form>
             </div>
           )}
-          {selectedChapter && (
-            <div className="flex items-center gap-4 pb-3">
-              <label>Topic</label>
-              <select
-                className="py-2 px-3 text-black  h-fit rounded-lg"
-                value={selectedSection}
-                onChange={handleSectionSelectChange}
-              >
-                <option value="" disabled>
-                  Choose a Section
-                </option>
-                {subjects
-                  .find((subject) => subject.subjectName === selectedSubject)
-                  .Chapter.find((chapter) => chapter._id === selectedChapterId)
-                  .lectureContent.map((section) => (
-                    <option
-                      className="text-black"
-                      key={section._id}
-                      value={section.sectionName}
-                    >
-                      {section.sectionName}
-                    </option>
-                  ))}
-                <option value="other">Other</option>
-              </select>
-              {selectedSection && (
-                <button
-                  onClick={() => setAddSubsection(sectionId)}
-                  className="mt-3 flex items-center gap-x-1 bg-white rounded-lg p-2"
-                >
-                  <FaPlus className="text-lg" />
-                  <p>Add Lecture</p>
-                </button>
-              )}
-            </div>
-          )}
          {selectedChapter && selectedSection && (
   <div className="px-4 py-2 bg-white flex-col flex items-start w-full min-h-56 border rounded-lg  gap-4 pb-3">
     <p className="text-xl text-richblack-400">Video Lectures</p>
+    <div className="relative flex items-center justify-center gap-4">
+
     {subsection && subsection.length > 0 ? (
       subsection.map((video) => (
         <div key={video._id} className="relative flex items-center justify-center gap-4">
@@ -440,6 +448,7 @@ function Addlecture() {
     ) : (
       <p className="text-lg text-center text-richblack-400">No data found</p>
     )}
+    </div>
   </div>
 )}
         </div>

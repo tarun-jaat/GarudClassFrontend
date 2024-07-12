@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 import "../../QuizComponentMain.js/Style.css";
-import { resetQuizState, setStep } from "../../../Slices/QuizSlice";
+import { resetQuizState, setScore, setStep } from "../../../Slices/QuizSlice";
 import { submitAnswer,endQuiz } from "../../../Services/Operations/QuizApi";
 
 function AttemptQuiz() {
@@ -134,9 +134,16 @@ function AttemptQuiz() {
   
   const goToquiz = () => {
     finishQuiz()
-    dispatch(resetQuizState()); // reset the quiz state
-    dispatch(setStep(1));
-    navigate("/dashboard/quiz");
+    // dispatch(resetQuizState()); // reset the quiz state
+    // dispatch(setStep(1));
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+    setTimeout(() => {
+      dispatch(setStep(3));
+    }, 3000);
+    
+
   };
 
   const submitAnswertoAPi = async () => {
@@ -164,6 +171,9 @@ function AttemptQuiz() {
     if (response && response.data && response.data.success) {
       if (response.data.success) {
         console.log("Answer submitted successfully!");
+        dispatch(setScore(response.data.data.score))
+        console.log("score",response.data.data.score)
+        
       } else {
         console.error("Error submitting answer:", response.error);
       }
