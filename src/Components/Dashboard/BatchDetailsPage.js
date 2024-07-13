@@ -88,7 +88,7 @@ function BatchDetailsPage() {
       <div className="rounded-t-2xl mx-6">
         <div className="bg-blue-200 rounded-t-2xl py-6">
           <h1 className="text-white font-bold text-2xl px-4">
-            {batchDetail.batchName}
+            {batchDetail?.batchName}
           </h1>
         </div>
         <div className="">
@@ -106,7 +106,6 @@ function BatchDetailsPage() {
                   <Tab label="All Classes" value="2" />
                   <Tab label="Quizzes" value="3" />
                   <Tab label="Announcements" value="4" />
-
                 </TabList>
               </Box>
               <TabPanel
@@ -116,7 +115,7 @@ function BatchDetailsPage() {
                 <div className="w-3/4">
                   <div className="bg-white p-4 rounded-lg">
                     <p className="text-gray-500 text-lg">
-                      {batchDetail.batchDescription}
+                      {batchDetail?.batchDescription}
                     </p>
                     <Accordion
                       className=" mt-4"
@@ -139,7 +138,7 @@ function BatchDetailsPage() {
                         id="panel1-header"
                       >
                         <Typography className="text-blue-200">
-                          {batchDetail.batchName} Includes
+                          {batchDetail?.batchName} Includes
                         </Typography>
                       </AccordionSummary>
                       <AccordionDetails>
@@ -163,7 +162,7 @@ function BatchDetailsPage() {
                     </Accordion>
                     <p className="flex mt-4 items-center gap-1">
                       <FaBullhorn className="text-yellow-100" /> Discover All
-                      The Benefits Of {batchDetail.batchName}{" "}
+                      The Benefits Of {batchDetail?.batchName}{" "}
                       <span className="text-blue-500">Know More</span>
                     </p>
                   </div>
@@ -212,14 +211,20 @@ function BatchDetailsPage() {
                         <p>{batchDetail?.batchMaxStudents}</p>
                       </li>
                       <li className="flex items-center gap-2">
-                        <p className="text-blue-500 text-lg font-semibold"> Subjects :</p>
+                        <p className="text-blue-500 text-lg font-semibold">
+                          {" "}
+                          Subjects :
+                        </p>
                         <ol className=" list-decimal flex gap-2">
-{                            batchDetail?.subjects.map((subject) => (
+                          {batchDetail &&
+                            batchDetail.subjects &&
+                            batchDetail.subjects.map((subject) => (
                               <li
                                 key={subject._id}
                                 className="text-richblack-500 flex "
                               >
-                                {subject.subjectName}{","}
+                                {subject.subjectName}
+                                {","}
                               </li>
                             ))}
                         </ol>
@@ -270,14 +275,17 @@ function BatchDetailsPage() {
                   <div className="cardA  overflow-visible flex w-full px-3 items-center justify-between ">
                     <div className=" flex w-full px-3 items-center justify-between ">
                       <div className="text-blue-100 text-left w-full flex items-center gap-1 text-xl">
-                        <FaIndianRupeeSign /> {batchDetail.batchFees} {" "}
-                        <span className="line-through text-lg text-richblack-300">{batchDetail.batchFees+500}</span>
+                        <FaIndianRupeeSign /> {batchDetail?.batchFees}{" "}
+                        <span className="line-through text-lg text-richblack-300">
+                          {batchDetail?.batchFees + 500}
+                        </span>
                       </div>
-                      
+
                       {batchDetail.studentsEnrolled &&
-                      batchDetail.studentsEnrolled.includes(userId) ? (
+                      batchDetail?.studentsEnrolled.includes(userId) ? (
                         <button className="w-24 text-white rounded-2xl bg-blue-100 px-2 py-2 shadow-md  font-bold ">
-                          Start Studying</button>
+                          Start Studying
+                        </button>
                       ) : (
                         <button className="w-24 text-white rounded-2xl bg-blue-100 px-2 py-2 shadow-md  font-bold ">
                           Buy{" "}
@@ -288,14 +296,16 @@ function BatchDetailsPage() {
                 </div>
               </TabPanel>
               <TabPanel className="mt-2" value="2">
-                <ClassesTab batchData={batchDetail}/>
-  
+                <ClassesTab batchData={batchDetail} />
               </TabPanel>
               <TabPanel className="mt-2" value="3">
                 No Quiz Found !
               </TabPanel>
               <TabPanel className="mt-2" value="4">
                 No Announcements yet !
+              </TabPanel>
+              <TabPanel className="mt-2" value="5">
+                {/* {batchDetail && batchDetail.FaIndianRupeeSigntruct} */}
               </TabPanel>
             </TabContext>
           </Box>
